@@ -8,4 +8,4 @@ Dojo Dijits For Native Form Controls
 
 ## License
 
-See LICENSE.
+dijitive is released under the MIT license
