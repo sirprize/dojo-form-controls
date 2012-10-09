@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dijitive/Select</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <a href="index.html">Back to overview</a>
+            
+            <h1>dijitive/Select</h1>
+            <h3>Simple</h3>
+            <select id="w1"></select><hr />
+            <h3>Multiple</h3>
+            <select id="w2"></select><hr />
+            <h3>Backed by synchronous store</h3>
+            <select id="w3"></select><hr />
+            <h3>Backed by asynchronous store</h3>
+            <select id="w4"></select><hr />
+            <h3>Disabled</h3>
+            <select id="w5"></select>
+            <h3>Declarative</h3>
+            <select id="w6" name="yoyo" data-dojo-type="dijitive/Select" required="true">
+                <option value="">Please select</option>
+                <option value="a">A</option>
+                <option value="b" selected="selected">B</option>
+                <option value="c" disabled="true">C</option>
+                <option value="d">D</option>
+            </select>
+            <h3>Declarative (multiple)</h3>
+            <select id="w7" name="yoyo" data-dojo-type="dijitive/Select" multiple="true" required="true">
+                <option value="">Please select</option>
+                <option value="a" selected="selected">A</option>
+                <option value="b" selected="selected">B</option>
+                <option value="c" disabled="true">C</option>
+                <option value="d">D</option>
+            </select>
+        </div>
+        
+        <script type="text/javascript" src="config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+        <script type="text/javascript" src="test_Select.js"></script>
+    </body>
+</html>

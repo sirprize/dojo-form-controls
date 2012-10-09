@@ -1,0 +1,22 @@
+[
+    {
+        id: "",
+        label: 'Please select'
+    },
+    {
+        id: "a",
+        label: "A"
+    },
+    {
+        id: "b",
+        label: "B"
+    },
+    {
+        id: "c",
+        label: "C"
+    },
+    {
+        id: "d",
+        label: "D"
+    }
+]
