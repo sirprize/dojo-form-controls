@@ -1,0 +1,6 @@
+{
+    "name": "frontend",
+    "description": "Dijitive Documentation Website",
+    "version": "dev",
+    "dojoBuild": "package.js"
+}

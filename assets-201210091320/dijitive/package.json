@@ -1,0 +1,6 @@
+{
+    "name": "dijitive",
+    "description": "Dojo Dijits For Native Form Controls",
+    "version": "dev",
+    "dojoBuild": "package.js"
+}

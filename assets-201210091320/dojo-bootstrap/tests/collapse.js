@@ -1,0 +1,3 @@
+//>>built
+require({packages:[{name:"dojo",location:"../dojo"},{name:"bootstrap",location:"../bootstrap"}]},["doh","dojo/on","dojo/dom-construct","dojo/dom-class","../Collapse"],function(a,d,b,c){a.register("bootstrap.collapse",{"should be defined on NodeList object":function(){a.t(dojo.query(document.body).collapse)},"should return element":function(){a.is(document.body,dojo.query(document.body).collapse()[0])},"should show a collapsed element":{setUp:function(){this.n=b.place('<div class="collapse"></div>',
+document.body);dojo.query(this.n).collapse("show")},runTest:function(){a.t(c.contains(this.n,"in"));a.t(/height/.test(""+this.n.style.cssText))},tearDown:function(){b.destroy(this.n)}}})});

@@ -1,0 +1,498 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Dijitive - Dojo Dijits For Native Form Controls</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/solarized_dark.min.css">
+        
+        
+            <link rel="stylesheet" href="assets-201210091320/frontend-styles/bootstrap-common.css">
+            <link rel="stylesheet" href="assets-201210091320/frontend-styles/bootstrap-responsive.css">
+            <link rel="stylesheet" href="assets-201210091320/frontend-styles/bootstrap-docs.css">
+        
+        
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+        <!-- Navbar -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!--<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></button> <a class="brand" href="./index.html">Bootstrap</a>-->
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="">
+                                <a href="http://github.com/sirprize/dijitive">Dijitive on Github</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subhead -->
+        <header class="jumbotron subhead" id="overview">
+            <div class="container">
+                <h1>Dijitive</h1>
+                <p class="lead">Dojo Dijits For Native Form Controls.</p>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <!-- Docs nav -->
+            <div class="row">
+                <div class="span3 bs-docs-sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav">
+                        <!--<li><a href="#intro"><i class="icon-chevron-right"></i> Intro</a></li>-->
+                        <li><a href="#button"><i class="icon-chevron-right"></i> Button</a></li>
+                        <li><a href="#checkbox"><i class="icon-chevron-right"></i> Checkbox</a></li>
+                        <li><a href="#radio"><i class="icon-chevron-right"></i> Radio</a></li>
+                        <li><a href="#select"><i class="icon-chevron-right"></i> Select</a></li>
+                        <li><a href="#textarea"><i class="icon-chevron-right"></i> Textarea</a></li>
+                        <li><a href="#expanding-textarea"><i class="icon-chevron-right"></i> Expanding Textarea</a></li>
+                        <li><a href="#textbox"><i class="icon-chevron-right"></i> Textbox</a></li>
+                    </ul>
+                </div>
+            
+                <div class="span9">
+                    <!-- Intro
+                    <section id="intro">
+                        <div class="page-header">
+                            <h1>dijitive</h1>
+                            <p>Some of the original properties are omitted since they make no sense without using the themes bundled with Dijit (eg <code>iconClass</code> or <code>showLabel</code>)</p>
+                        </div>
+                    </section>
+                    -->
+                    
+                    <!-- Button -->
+                    <section id="button">
+                        <div class="page-header">
+                            <h1>Button</h1>
+                            <p>Representation of a native <code>&lt;button&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Button.html">dijit/form/Button</a>.
+                        </div>
+                        
+                        <h3>Programmatic</h3>
+                        <div class="bs-docs-example">
+                            <button id="button1"></button>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Button&quot;], function (Button) {
+    var button1 = new Button({
+        type: 'submit',
+        'class': 'btn btn-primary',
+        label: '&lt;i class=&quot;icon-music icon-white&quot;&gt;&lt;/i&gt; La La Laaaa',
+        onClick: function (e) {
+            console.info('clicked?');
+            return false;
+        }
+    }, 'button1');
+
+    button1.startup();
+});</code></pre>
+
+                        <h3>Declarative</h3>
+                        <div class="bs-docs-example">
+                            <button id="button2" class="btn btn-success" data-dojo-type="dijitive/Button">
+                                <i class="icon-music icon-white"></i> La La Laaaa
+                            </button>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;button id=&quot;button2&quot; class=&quot;btn btn-success&quot; data-dojo-type=&quot;dijitive/Button&quot;&gt;
+    &lt;i class=&quot;icon-music icon-white&quot;&gt;&lt;/i&gt; La La Laaaa
+&lt;/button&gt;
+
+&lt;script&gt;
+    require([&quot;dijitive/Button&quot;, &quot;dojo/parser&quot;]);
+&lt;/script&gt;</code></pre>
+                    </section>
+                    
+                    <!-- Checkbox -->
+                    <section id="checkbox">
+                        <div class="page-header">
+                            <h1>Checkbox</h1>
+                            <p>Representation of a native <code>&lt;input type=&quot;checkbox&quot;/&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/CheckBox.html">dijit/form/CheckBox</a>.</p>
+                        </div>
+
+                        <h3>Programmatic</h3>
+                        <div class="bs-docs-example">
+                            <input type="checkbox" id="checkbox1"/>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Checkbox&quot;], function (Checkbox) {
+    var checkbox1 = new Checkbox({
+        name: 'menu',
+        value: 'clam chowder',
+        checked: true,
+        onChange: function (e) {
+            // value is false when unchecked
+            console.info('value is: ' + this.get('value'));
+        }
+    }, 'checkbox1');
+    
+    checkbox1.startup();
+});</code></pre>
+
+                        <h3>Declarative</h3>
+                        <div class="bs-docs-example">
+                            <input id="checkbox2" type="checkbox" name="extraCheese" value="on" data-dojo-type="dijitive/Checkbox"/>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;input id=&quot;checkbox2&quot; type=&quot;checkbox&quot; name=&quot;extraCheese&quot; value=&quot;on&quot; data-dojo-type=&quot;dijitive/Checkbox&quot;/&gt;
+
+&lt;script&gt;
+    require([&quot;dijitive/Checkbox&quot;, &quot;dojo/parser&quot;]);
+&lt;/script&gt;</code></pre>
+                    </section>
+                    
+                    <!-- Radio -->
+                    <section id="radio">
+                        <div class="page-header">
+                            <h1>Radio</h1>
+                            <p>Representation of a native <code>&lt;input type=&quot;radio&quot;/&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/RadioButton.html">dijit/form/RadioButton</a>.</p>
+                        </div>
+
+                        <h3>Programmatic</h3>
+                        <div class="bs-docs-example">
+                            <input type="radio" id="radio1"/>
+                            <input type="radio" id="radio2"/>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Radio&quot;], function (Radio) {
+    var radio = new Radio({
+        name: 'size',
+        value: 'large',
+        checked: true,
+        onChange: function (e) {
+            // value is false when unchecked
+            console.info('value is: ' + this.get('value'));
+        }
+    }, 'radio');
+    
+    radio.startup();
+});</code></pre>
+
+                        <h3>Declarative</h3>
+                        <div class="bs-docs-example">
+                            <input id="radio3" type="radio" name="s" value="large" data-dojo-type="dijitive/Radio"/>
+                            <input id="radio4" type="radio" name="s" value="samll" checked="checked" data-dojo-type="dijitive/Radio"/>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;input id=&quot;radio3&quot; type=&quot;radio&quot; name=&quot;s&quot; value=&quot;large&quot; data-dojo-type=&quot;dijitive/Radio&quot;/&gt;
+
+&lt;script&gt;
+    require([&quot;dijitive/Radio&quot;, &quot;dojo/parser&quot;]);
+&lt;/script&gt;</code></pre>
+                    </section>
+                    
+                    <!-- Select -->
+                    <section id="select">
+                        <div class="page-header">
+                            <h1>Select</h1>
+                            <p>Representation of a native <code>&lt;select&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Select.html">dijit/form/Select</a>.</p>
+                        </div>
+
+                        <h3>Programmatic</h3>
+                        
+                        <div class="bs-docs-example">
+                            <form><select id="select1"></select></form>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Select&quot;], function (Select) {
+    var options = [
+        { value: '', label: 'Please select' },
+        { value: &quot;steak-and-lobster&quot;, label: &quot;Steak &amp; Lobster&quot; },
+        { value: &quot;clam-chowder&quot;, label: &quot;Clam chowder&quot; },
+        { value: &quot;pizza&quot;, label: &quot;Pizza&quot;, disabled: true },
+        { value: &quot;pasta&quot;, label: &quot;Pasta&quot; }
+    ];
+    
+    var select1 = new Select({
+        name: 'meal1',
+        value: 'pasta',
+        options: options,
+        required: true,
+        onChange: function (value) {
+            console.info('select.onChange(): ' + value)
+        }
+    }, 'select1');
+    
+    select1.watch('value', function (prop, oldVal, val) {
+        console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
+    });
+    
+    select1.watch('message', function (prop, oldVal, val) {
+        console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+    });
+    
+    select1.startup();
+});</code></pre>
+                        
+                        <div class="bs-docs-example">
+                            <select id="select2"></select>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Select&quot;], function (Select) {
+    var options = [
+        { value: '', label: 'Please select' },
+        { value: &quot;steak-and-lobster&quot;, label: &quot;Steak &amp; Lobster&quot; },
+        { value: &quot;clam-chowder&quot;, label: &quot;Clam chowder&quot; },
+        { value: &quot;pizza&quot;, label: &quot;Pizza&quot;, disabled: true },
+        { value: &quot;pasta&quot;, label: &quot;Pasta&quot; }
+    ];
+    
+    var select2 = new Select({
+        multiple: true,
+        name: 'meal2',
+        value: ['steak-and-lobster', 'clam-chowder'],
+        options: options,
+        required: true,
+        onChange: function (value) {
+            console.info('select.onChange(): ' + value)
+        }
+    }, 'select2');
+    
+    select2.watch('value', function (prop, oldVal, val) {
+        console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
+    });
+    
+    select2.watch('message', function (prop, oldVal, val) {
+        console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+    });
+    
+    select2.startup();
+});</code></pre>
+                        
+                        <h3>Declarative</h3>
+                        <div class="bs-docs-example">
+                            <select id="select3" name="meal3" data-dojo-type="dijitive/Select" required="true">
+                                <option value="">Please select</option>
+                                <option value="steak-and-lobster">Steak &amp; Lobster</option>
+                                <option value="clam-chowder" selected="selected">Clam Chowder</option>
+                                <option value="pizza" disabled="true">Pizza</option>
+                                <option value="pasta">Pasta</option>
+                            </select>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;select id=&quot;select3&quot; name=&quot;meal3&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+    &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
+    &lt;option value=&quot;steak-and-lobster&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
+    &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
+    &lt;option value=&quot;pizza&quot; disabled=&quot;true&quot;&gt;Pizza&lt;/option&gt;
+    &lt;option value=&quot;pasta&quot;&gt;Pasta&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+    require([&quot;dijitive/Select&quot;, &quot;dojo/parser&quot;]);
+&lt;/script&gt;</code></pre>
+                        
+                        <div class="bs-docs-example">
+                            <select id="select4" name="meal4" multiple="true" data-dojo-type="dijitive/Select" required="true">
+                                <option value="">Please select</option>
+                                <option value="steak-and-lobster" selected="selected">Steak &amp; Lobster</option>
+                                <option value="clam-chowder" selected="selected">Clam Chowder</option>
+                                <option value="pizza" disabled="true">Pizza</option>
+                                <option value="pasta">Pasta</option>
+                            </select>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;select id=&quot;select4&quot; name=&quot;meal4&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+    &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
+    &lt;option value=&quot;steak-and-lobster&quot; selected=&quot;selected&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
+    &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
+    &lt;option value=&quot;pizza&quot; disabled=&quot;true&quot;&gt;Pizza&lt;/option&gt;
+    &lt;option value=&quot;pasta&quot;&gt;Pasta&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+    require([&quot;dijitive/Select&quot;, &quot;dojo/parser&quot;]);
+&lt;/script&gt;</code></pre>
+                    </section>
+                    
+                    <!-- Textarea -->
+                    <section id="textarea">
+                        <div class="page-header">
+                            <h1>Textarea</h1>
+                            <p>Representation of a native <code>&lt;textarea&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/SimpleTextarea.html">dijit/form/SimpleTextarea</a>.</p>
+                        </div>
+
+                        <h3>Programmatic</h3>
+                        <div class="bs-docs-example">
+                            <textarea id="textarea1"></textarea>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Textarea&quot;], function (Textarea) {
+    var textarea1 = new Textarea({
+        name: 'note',
+        autocomplete: false,
+        uppercase: true,
+        trim: true,
+        onKeyPress: function (ev) {
+            console.info('key pressed')
+        }
+    }, 'textarea1');
+
+    textarea1.startup();
+    
+    textarea1.watch('value', function (name, oldVal, val) {
+        console.info('New value is &quot;' + val);
+    });
+});</code></pre>
+
+                        <h3>Declarative</h3>
+                        <div class="bs-docs-example">
+                            <textarea id="textarea2" name="note" propercase="true" data-dojo-type="dijitive/Textarea"></textarea>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;textarea id=&quot;textarea2&quot; name=&quot;note&quot; propercase=&quot;true&quot; data-dojo-type=&quot;dijitive/Textarea&quot;&gt;&lt;/textarea&gt;
+
+&lt;script&gt;
+    require([&quot;dijitive/Textarea&quot;, &quot;dojo/parser&quot;]);
+&lt;/script&gt;</code></pre>
+                    </section>
+                    
+                    <!-- ExpandingTextarea -->
+                    <section id="expanding-textarea">
+                        <div class="page-header">
+                            <h1>ExpandingTextarea</h1>
+                            <p>Representation of a native <code>&lt;textarea&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Textarea.html">dijit/form/Textarea</a>.</p>
+                        </div>
+
+                        <h3>Programmatic</h3>
+                        <div class="bs-docs-example">
+                            <textarea id="expandingTextarea1"></textarea>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/ExpandingTextarea&quot;], function (ExpandingTextarea) {
+    var expandingTextarea1 = new ExpandingTextarea({
+        name: 'note',
+        autocomplete: false,
+        uppercase: true,
+        trim: true,
+        onKeyPress: function (ev) {
+            console.info('key pressed')
+        }
+    }, 'expandingTextarea1');
+
+    expandingTextarea1.startup();
+    
+    expandingTextarea1.watch('value', function (name, oldVal, val) {
+        console.info('New value is &quot;' + val);
+    });
+});</code></pre>
+
+                        <h3>Declarative</h3>
+                        <div class="bs-docs-example">
+                            <textarea id="expandingTextarea2" name="note" propercase="true" data-dojo-type="dijitive/ExpandingTextarea"></textarea>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;textarea id=&quot;expandingTextarea2&quot; name=&quot;note&quot; propercase=&quot;true&quot; data-dojo-type=&quot;dijitive/ExpandingTextarea&quot;&gt;&lt;/textarea&gt;
+
+&lt;script&gt;
+    require([&quot;dijitive/ExpandingTextarea&quot;, &quot;dojo/parser&quot;]);
+&lt;/script&gt;</code></pre>
+                    </section>
+                    
+                    <!-- Textbox -->
+                    <section id="textbox">
+                        <div class="page-header">
+                            <h1>Textbox</h1>
+                            <p>Representation of a native <code>&lt;input type=&quot;text&quot;&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/TextBox.html">dijit/form/TextBox</a>.</p>
+                        </div>
+
+                        <h3>Programmatic</h3>
+                        <div class="bs-docs-example">
+                            <input type="text" id="textbox1"/>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Textbox&quot;], function (Textbox) {
+    var textbox1 = new Textbox({
+        name: 'title',
+        placeHolder: 'Your title',
+        autocomplete: false,
+        uppercase: true,
+        trim: true,
+        onKeyPress: function (ev) {
+            console.info('Key pressed')
+        }
+    }, 'textbox1');
+
+    textbox1.startup();
+    
+    textbox1.watch('value', function (name, oldVal, val) {
+        console.info('New value is &quot;' + val);
+    });
+});</code></pre>
+
+                        <h3>Declarative</h3>
+                        <div class="bs-docs-example">
+                            <input type="text" id="textbox2" name="title" propercase="true" data-dojo-type="dijitive/Textbox"/>
+                        </div>
+                        
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;input type=&quot;text&quot; id=&quot;textbox2&quot; name=&quot;title&quot; propercase=&quot;true&quot; data-dojo-type=&quot;dijitive/Textbox&quot;/&gt;
+
+&lt;script&gt;
+    require([&quot;dijitive/Textbox&quot;, &quot;dojo/parser&quot;]);
+&lt;/script&gt;</code></pre>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>Big thanks go out to the <a href="http://dojotoolkit.org">Dojo community</a> and the <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap crew</a></p>
+                <p>dijitive has been written by <a href="http://sirprize.me">Sir Prize</a> and it is released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+                <p>This project is hosted on <a href="http://github.com/sirprize/dijitive">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dijitive-website-generator">dijitive-website-generator</a></p>
+                
+            </div>
+        </footer>
+        
+        <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+        
+        
+            <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201210091320/dojo/dojo.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/event.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/promise.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/browser.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/ajax.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/dom-common.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/dom-extra.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/widget-common.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/widget-extra.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/form-click.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/form-select.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/layer/form-text.js"></script>
+            <script type="text/javascript" src="assets-201210091320/frontend/index.js"></script>
+        
+        
+        <script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-35397940-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </body>
+</html>
