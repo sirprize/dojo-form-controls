@@ -37,8 +37,9 @@ define([
         postMixInProperties: function () {
             // summary:
             //      set the missing message
+            var loc = i18n.getLocalization('dijit/form', 'validate', this.lang);
+            this._missingMsg = (loc) ? loc.missingMessage : 'Input required';
             this.inherited(arguments);
-            this._missingMsg = i18n.getLocalization('dijit.form', 'validate', this.lang).missingMessage;
         },
         
         postCreate: function () {
