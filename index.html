@@ -17,9 +17,9 @@
         <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/solarized_dark.min.css">
         
         
-            <link rel="stylesheet" href="assets-201210091320/frontend-styles/bootstrap-common.css">
-            <link rel="stylesheet" href="assets-201210091320/frontend-styles/bootstrap-responsive.css">
-            <link rel="stylesheet" href="assets-201210091320/frontend-styles/bootstrap-docs.css">
+            <link rel="stylesheet" href="assets-201210101323/frontend-styles/bootstrap-common.css">
+            <link rel="stylesheet" href="assets-201210101323/frontend-styles/bootstrap-responsive.css">
+            <link rel="stylesheet" href="assets-201210101323/frontend-styles/bootstrap-docs.css">
         
         
         <!--[if lt IE 9]>
@@ -108,12 +108,24 @@
 
                         <h3>Declarative</h3>
                         <div class="bs-docs-example">
-                            <button id="button2" class="btn btn-success" data-dojo-type="dijitive/Button">
+                            <script>
+                                var buttonOnClick = function (ev) {
+                                    console.info('Clicked');
+                                }
+                            </script>
+                            
+                            <button class="btn btn-success" data-dojo-type="dijitive/Button" data-dojo-props="onClick: buttonOnClick">
                                 <i class="icon-music icon-white"></i> La La Laaaa
                             </button>
                         </div>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;button id=&quot;button2&quot; class=&quot;btn btn-success&quot; data-dojo-type=&quot;dijitive/Button&quot;&gt;
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+    var buttonOnClick = function (ev) {
+        console.info('Clicked');
+    }
+&lt;/script&gt;
+
+&lt;button class=&quot;btn btn-success&quot; data-dojo-type=&quot;dijitive/Button&quot; data-dojo-props=&quot;onClick: buttonOnClick&quot;&gt;
     &lt;i class=&quot;icon-music icon-white&quot;&gt;&lt;/i&gt; La La Laaaa
 &lt;/button&gt;
 
@@ -150,10 +162,22 @@
 
                         <h3>Declarative</h3>
                         <div class="bs-docs-example">
-                            <input id="checkbox2" type="checkbox" name="extraCheese" value="on" data-dojo-type="dijitive/Checkbox"/>
+                            <script>
+                                var checkboxOnChange = function (ev) {
+                                    console.info('New value is: ' + this.get('value'));
+                                }
+                            </script>
+                            
+                            <input type="checkbox" name="extraCheese" value="on" data-dojo-type="dijitive/Checkbox" data-dojo-props="onChange: checkboxOnChange"/>
                         </div>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;input id=&quot;checkbox2&quot; type=&quot;checkbox&quot; name=&quot;extraCheese&quot; value=&quot;on&quot; data-dojo-type=&quot;dijitive/Checkbox&quot;/&gt;
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+    var checkboxOnChange = function (ev) {
+        console.info('New value is: ' + this.get('value'));
+    }
+&lt;/script&gt;
+
+&lt;input type=&quot;checkbox&quot; name=&quot;extraCheese&quot; value=&quot;on&quot; data-dojo-type=&quot;dijitive/Checkbox&quot; data-dojo-props=&quot;onChange: checkboxOnChange&quot;/&gt;
 
 &lt;script&gt;
     require([&quot;dijitive/Checkbox&quot;, &quot;dojo/parser&quot;]);
@@ -189,11 +213,38 @@
 
                         <h3>Declarative</h3>
                         <div class="bs-docs-example">
-                            <input id="radio3" type="radio" name="s" value="large" data-dojo-type="dijitive/Radio"/>
-                            <input id="radio4" type="radio" name="s" value="samll" checked="checked" data-dojo-type="dijitive/Radio"/>
+                            <script>
+                                var radio1OnChange = function (ev) {
+                                    console.info('New value is: ' + this.get('value'));
+                                }
+                            </script>
+                            
+                            <input type="radio" name="s" value="large" data-dojo-type="dijitive/Radio" data-dojo-props="onChange: radio1OnChange"/>
+                            
+                            <script>
+                                var radio2OnChange = function (ev) {
+                                    console.info('New value is: ' + this.get('value'));
+                                }
+                            </script>
+                            
+                            <input type="radio" name="s" value="small" checked="checked" data-dojo-type="dijitive/Radio" data-dojo-props="onChange: radio2OnChange"/>
                         </div>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;input id=&quot;radio3&quot; type=&quot;radio&quot; name=&quot;s&quot; value=&quot;large&quot; data-dojo-type=&quot;dijitive/Radio&quot;/&gt;
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+    var radio1OnChange = function (ev) {
+        console.info('New value is: ' + this.get('value'));
+    }
+&lt;/script&gt;
+
+&lt;input type=&quot;radio&quot; name=&quot;s&quot; value=&quot;large&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio1OnChange&quot;/&gt;
+
+&lt;script&gt;
+    var radio2OnChange = function (ev) {
+        console.info('New value is: ' + this.get('value'));
+    }
+&lt;/script&gt;
+
+&lt;input type=&quot;radio&quot; name=&quot;s&quot; value=&quot;small&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio2OnChange&quot;/&gt;
 
 &lt;script&gt;
     require([&quot;dijitive/Radio&quot;, &quot;dojo/parser&quot;]);
@@ -280,21 +331,43 @@
                         
                         <h3>Declarative</h3>
                         <div class="bs-docs-example">
-                            <select id="select3" name="meal3" data-dojo-type="dijitive/Select" required="true">
+                            <select name="meal3" data-dojo-type="dijitive/Select" required="true">
                                 <option value="">Please select</option>
                                 <option value="steak-and-lobster">Steak &amp; Lobster</option>
                                 <option value="clam-chowder" selected="selected">Clam Chowder</option>
                                 <option value="pizza" disabled="true">Pizza</option>
                                 <option value="pasta">Pasta</option>
+                                <script type="dojo/aspect" data-dojo-method="onChange" data-dojo-args="value">
+                                    console.info('select.onChange(): ' + value);
+                                </script>
+                                
+                                <script type="dojo/watch" data-dojo-prop="value" data-dojo-args="prop, oldVal, val">
+                                    console.info('select.watch("value")', prop, oldVal, val);
+                                </script>
+                                
+                                <script type="dojo/watch" data-dojo-prop="message" data-dojo-args="prop, oldVal, val">
+                                    console[(val) ? 'error' : 'info']('select.watch("message"):', val);
+                                </script>
                             </select>
                         </div>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;select id=&quot;select3&quot; name=&quot;meal3&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;select name=&quot;meal3&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
     &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
     &lt;option value=&quot;steak-and-lobster&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
     &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
     &lt;option value=&quot;pizza&quot; disabled=&quot;true&quot;&gt;Pizza&lt;/option&gt;
     &lt;option value=&quot;pasta&quot;&gt;Pasta&lt;/option&gt;
+    &lt;script type=&quot;dojo/aspect&quot; data-dojo-method=&quot;onChange&quot; data-dojo-args=&quot;value&quot;&gt;
+        console.info('select.onChange(): ' + value);
+    &lt;/script&gt;
+    
+    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;value&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
+        console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
+    &lt;/script&gt;
+    
+    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;message&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
+        console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+    &lt;/script&gt;
 &lt;/select&gt;
 
 &lt;script&gt;
@@ -302,21 +375,43 @@
 &lt;/script&gt;</code></pre>
                         
                         <div class="bs-docs-example">
-                            <select id="select4" name="meal4" multiple="true" data-dojo-type="dijitive/Select" required="true">
+                            <select name="meal4" multiple="true" data-dojo-type="dijitive/Select" required="true">
                                 <option value="">Please select</option>
                                 <option value="steak-and-lobster" selected="selected">Steak &amp; Lobster</option>
                                 <option value="clam-chowder" selected="selected">Clam Chowder</option>
                                 <option value="pizza" disabled="true">Pizza</option>
                                 <option value="pasta">Pasta</option>
+                                <script type="dojo/aspect" data-dojo-method="onChange" data-dojo-args="value">
+                                    console.info('select.onChange(): ' + value);
+                                </script>
+                                
+                                <script type="dojo/watch" data-dojo-prop="value" data-dojo-args="prop, oldVal, val">
+                                    console.info('select.watch("value")', prop, oldVal, val);
+                                </script>
+                                
+                                <script type="dojo/watch" data-dojo-prop="message" data-dojo-args="prop, oldVal, val">
+                                    console[(val) ? 'error' : 'info']('select.watch("message"):', val);
+                                </script>
                             </select>
                         </div>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;select id=&quot;select4&quot; name=&quot;meal4&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;select name=&quot;meal4&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
     &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
     &lt;option value=&quot;steak-and-lobster&quot; selected=&quot;selected&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
     &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
     &lt;option value=&quot;pizza&quot; disabled=&quot;true&quot;&gt;Pizza&lt;/option&gt;
     &lt;option value=&quot;pasta&quot;&gt;Pasta&lt;/option&gt;
+    &lt;script type=&quot;dojo/aspect&quot; data-dojo-method=&quot;onChange&quot; data-dojo-args=&quot;value&quot;&gt;
+        console.info('select.onChange(): ' + value);
+    &lt;/script&gt;
+    
+    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;value&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
+        console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
+    &lt;/script&gt;
+    
+    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;message&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
+        console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+    &lt;/script&gt;
 &lt;/select&gt;
 
 &lt;script&gt;
@@ -356,10 +451,30 @@
 
                         <h3>Declarative</h3>
                         <div class="bs-docs-example">
-                            <textarea id="textarea2" name="note" propercase="true" data-dojo-type="dijitive/Textarea"></textarea>
+                            <script>
+                                var textareaOnKeyPress = function (ev) {
+                                    console.info('Key pressed')
+                                }
+                                
+                                var textareaOnChange = function (value) {
+                                    console.info('select.onChange(): ' + value)
+                                }
+                            </script>
+                            
+                            <textarea name="note" data-dojo-type="dijitive/Textarea" data-dojo-props="onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, propercase: true"></textarea>
                         </div>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;textarea id=&quot;textarea2&quot; name=&quot;note&quot; propercase=&quot;true&quot; data-dojo-type=&quot;dijitive/Textarea&quot;&gt;&lt;/textarea&gt;
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+    var textareaOnKeyPress = function (ev) {
+        console.info('Key pressed')
+    }
+    
+    var textareaOnChange = function (value) {
+        console.info('select.onChange(): ' + value)
+    }
+&lt;/script&gt;
+
+&lt;textarea name=&quot;note&quot; data-dojo-type=&quot;dijitive/Textarea&quot; data-dojo-props=&quot;onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, propercase: true&quot;&gt;&lt;/textarea&gt;
 
 &lt;script&gt;
     require([&quot;dijitive/Textarea&quot;, &quot;dojo/parser&quot;]);
@@ -398,10 +513,30 @@
 
                         <h3>Declarative</h3>
                         <div class="bs-docs-example">
-                            <textarea id="expandingTextarea2" name="note" propercase="true" data-dojo-type="dijitive/ExpandingTextarea"></textarea>
+                            <script>
+                                var expandingTextareaOnKeyPress = function (ev) {
+                                    console.info('Key pressed')
+                                }
+                                
+                                var expandingTextareaOnChange = function (value) {
+                                    console.info('select.onChange(): ' + value)
+                                }
+                            </script>
+                            
+                            <textarea name="note" data-dojo-type="dijitive/ExpandingTextarea" data-dojo-props="onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, propercase: true"></textarea>
                         </div>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;textarea id=&quot;expandingTextarea2&quot; name=&quot;note&quot; propercase=&quot;true&quot; data-dojo-type=&quot;dijitive/ExpandingTextarea&quot;&gt;&lt;/textarea&gt;
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+    var expandingTextareaOnKeyPress = function (ev) {
+        console.info('Key pressed')
+    }
+    
+    var expandingTextareaOnChange = function (value) {
+        console.info('select.onChange(): ' + value)
+    }
+&lt;/script&gt;
+
+&lt;textarea name=&quot;note&quot; data-dojo-type=&quot;dijitive/ExpandingTextarea&quot; data-dojo-props=&quot;onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, propercase: true&quot;&gt;&lt;/textarea&gt;
 
 &lt;script&gt;
     require([&quot;dijitive/ExpandingTextarea&quot;, &quot;dojo/parser&quot;]);
@@ -441,10 +576,30 @@
 
                         <h3>Declarative</h3>
                         <div class="bs-docs-example">
-                            <input type="text" id="textbox2" name="title" propercase="true" data-dojo-type="dijitive/Textbox"/>
+                            <script>
+                                var textboxOnKeyPress = function (ev) {
+                                    console.info('Key pressed')
+                                }
+                                
+                                var textboxOnChange = function (value) {
+                                    console.info('select.onChange(): ' + value)
+                                }
+                            </script>
+                            
+                            <input type="text" name="title" data-dojo-type="dijitive/Textbox" data-dojo-props="onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, propercase: true"/>
                         </div>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;input type=&quot;text&quot; id=&quot;textbox2&quot; name=&quot;title&quot; propercase=&quot;true&quot; data-dojo-type=&quot;dijitive/Textbox&quot;/&gt;
+                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+    var textboxOnKeyPress = function (ev) {
+        console.info('Key pressed')
+    }
+    
+    var textboxOnChange = function (value) {
+        console.info('select.onChange(): ' + value)
+    }
+&lt;/script&gt;
+
+&lt;input type=&quot;text&quot; name=&quot;title&quot; data-dojo-type=&quot;dijitive/Textbox&quot; data-dojo-props=&quot;onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, propercase: true&quot;/&gt;
 
 &lt;script&gt;
     require([&quot;dijitive/Textbox&quot;, &quot;dojo/parser&quot;]);
@@ -468,19 +623,19 @@
         <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
         
         
-            <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201210091320/dojo/dojo.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/event.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/promise.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/browser.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/ajax.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/dom-common.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/dom-extra.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/widget-common.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/widget-extra.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/form-click.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/form-select.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/layer/form-text.js"></script>
-            <script type="text/javascript" src="assets-201210091320/frontend/index.js"></script>
+            <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201210101323/dojo/dojo.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/event.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/promise.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/browser.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/ajax.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/dom-common.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/dom-extra.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/widget-common.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/widget-extra.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/form-click.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/form-select.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/layer/form-text.js"></script>
+            <script type="text/javascript" src="assets-201210101323/frontend/index.js"></script>
         
         
         <script>
