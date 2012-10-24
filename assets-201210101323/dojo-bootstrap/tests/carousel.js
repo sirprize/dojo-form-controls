@@ -1,3 +1,0 @@
-//>>built
-require({packages:[{name:"dojo",location:"../dojo"},{name:"bootstrap",location:"../bootstrap"}]},"doh,dojo/on,dojo/dom-construct,dojo/dom-class,dojo/dom-attr,../Carousel".split(","),function(a,c,b){a.register("bootstrap.carousel",{"should be defined on NodeList object":function(){a.t(dojo.query(document.body).carousel)},"should return element":function(){a.is(document.body,dojo.query(document.body).carousel({interval:!1})[0])},"should not fire sliden when slide is prevented":{setUp:function(){this.n=
-b.place('<div class="carousel"/>',document.body)},runTest:function(){},tearDown:function(){b.destroy(this.n)}}})});

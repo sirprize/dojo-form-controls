@@ -1,0 +1,3 @@
+//>>built
+define("dobolo/ScrollTopSpyHelper","dojo/_base/declare,dojo/Evented,dojo/dom-geometry,dojo/_base/lang,dojo/_base/window,dojo/dom,dojo/on,./Util".split(","),function(c,d,h,j,k,o,l,m){return c([d],{scroller:null,constructor:function(e,c,f,g){var a,g=g||100,f=f||0,i=null,d=e===k.doc?0:h.position(e).y,n=m.throttle(function(b){for(a=b.length-1;0<=a;a-=1)if(h.position(b[a],!1).y<=0+f+d){if(i===b[a])break;i=b[a];this.emit("active",{bubbles:!0,cancelable:!0,node:b[a]});break}},g,this);this.scroller=l(e,"scroll",
+j.hitch(this,function(){node=n(c)}))},destroy:function(){this.scroller&&this.scroller.remove&&this.scroller.remove()}})});

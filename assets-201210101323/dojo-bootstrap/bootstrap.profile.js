@@ -1,3 +1,0 @@
-//>>built
-var profile=function(){var c=/^bootstrap\/tests\//,d=function(b,a){return a in{"bootstrap/bootstrap.profile":!0,"bootstrap/package.json":!0,"bootstrap/LICENSE":!0,"bootstrap/README.md":!0}||/(png|jpg|jpeg|gif|tiff)$/.test(b)};return{resourceTags:{ignore:function(b,a){return a in{"bootstrap/.gitignore":!0}},test:function(b,a){return a in{"bootstrap/tests":!0}||c.test(a)},copyOnly:function(b,a){return d(b,a)},miniExclude:function(b,a){return a in{"bootstrap/LICENCE":!0,"bootstrap/README.md":!0}},amd:function(b,
-a){return!(a in{"bootstrap/tests":!0}||c.test(a))&&!d(b,a)&&!(a in{"bootstrap/.gitignore":!0})&&/\.js$/.test(b)}}}}();

@@ -17,9 +17,9 @@
         <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/solarized_dark.min.css">
         
         
-            <link rel="stylesheet" href="assets-201210101323/frontend-styles/bootstrap-common.css">
-            <link rel="stylesheet" href="assets-201210101323/frontend-styles/bootstrap-responsive.css">
-            <link rel="stylesheet" href="assets-201210101323/frontend-styles/bootstrap-docs.css">
+            <link rel="stylesheet" href="assets-201210241130/frontend-styles/bootstrap-common.css">
+            <link rel="stylesheet" href="assets-201210241130/frontend-styles/bootstrap-responsive.css">
+            <link rel="stylesheet" href="assets-201210241130/frontend-styles/bootstrap-docs.css">
         
         
         <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
         <![endif]-->
     </head>
 
-    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <body>
 
         <!-- Navbar -->
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -81,7 +81,7 @@
                     -->
                     
                     <!-- Button -->
-                    <section id="button">
+                    <section id="button" class="spy">
                         <div class="page-header">
                             <h1>Button</h1>
                             <p>Representation of a native <code>&lt;button&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Button.html">dijit/form/Button</a>.
@@ -135,7 +135,7 @@
                     </section>
                     
                     <!-- Checkbox -->
-                    <section id="checkbox">
+                    <section id="checkbox" class="spy">
                         <div class="page-header">
                             <h1>Checkbox</h1>
                             <p>Representation of a native <code>&lt;input type=&quot;checkbox&quot;/&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/CheckBox.html">dijit/form/CheckBox</a>.</p>
@@ -185,7 +185,7 @@
                     </section>
                     
                     <!-- Radio -->
-                    <section id="radio">
+                    <section id="radio" class="spy">
                         <div class="page-header">
                             <h1>Radio</h1>
                             <p>Representation of a native <code>&lt;input type=&quot;radio&quot;/&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/RadioButton.html">dijit/form/RadioButton</a>.</p>
@@ -252,7 +252,7 @@
                     </section>
                     
                     <!-- Select -->
-                    <section id="select">
+                    <section id="select" class="spy">
                         <div class="page-header">
                             <h1>Select</h1>
                             <p>Representation of a native <code>&lt;select&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Select.html">dijit/form/Select</a>.</p>
@@ -420,7 +420,7 @@
                     </section>
                     
                     <!-- Textarea -->
-                    <section id="textarea">
+                    <section id="textarea" class="spy">
                         <div class="page-header">
                             <h1>Textarea</h1>
                             <p>Representation of a native <code>&lt;textarea&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/SimpleTextarea.html">dijit/form/SimpleTextarea</a>.</p>
@@ -482,7 +482,7 @@
                     </section>
                     
                     <!-- ExpandingTextarea -->
-                    <section id="expanding-textarea">
+                    <section id="expanding-textarea" class="spy">
                         <div class="page-header">
                             <h1>ExpandingTextarea</h1>
                             <p>Representation of a native <code>&lt;textarea&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Textarea.html">dijit/form/Textarea</a>.</p>
@@ -544,7 +544,7 @@
                     </section>
                     
                     <!-- Textbox -->
-                    <section id="textbox">
+                    <section id="textbox" class="spy">
                         <div class="page-header">
                             <h1>Textbox</h1>
                             <p>Representation of a native <code>&lt;input type=&quot;text&quot;&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/TextBox.html">dijit/form/TextBox</a>.</p>
@@ -614,8 +614,8 @@
             <div class="container">
                 <p class="pull-right"><a href="#">Back to top</a></p>
                 <p>Big thanks go out to the <a href="http://dojotoolkit.org">Dojo community</a> and the <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap crew</a></p>
-                <p>dijitive has been written by <a href="http://sirprize.me">Sir Prize</a> and it is released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
-                <p>This project is hosted on <a href="http://github.com/sirprize/dijitive">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dijitive-website-generator">dijitive-website-generator</a></p>
+                <p>dijitive is written by <a href="http://sirprize.me">Sir Prize</a> and it is released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+                <p>This project is hosted on <a href="http://github.com/sirprize/dijitive">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dijitive-doc-generator">dijitive-doc-generator</a></p>
                 
             </div>
         </footer>
@@ -623,19 +623,19 @@
         <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
         
         
-            <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201210101323/dojo/dojo.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/event.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/promise.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/browser.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/ajax.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/dom-common.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/dom-extra.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/widget-common.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/widget-extra.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/form-click.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/form-select.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/layer/form-text.js"></script>
-            <script type="text/javascript" src="assets-201210101323/frontend/index.js"></script>
+            <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201210241130/dojo/dojo.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/event.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/promise.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/browser.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/ajax.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/dom-common.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/dom-extra.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/widget-common.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/widget-extra.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/form-click.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/form-select.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/layer/form-text.js"></script>
+            <script type="text/javascript" src="assets-201210241130/frontend/index.js"></script>
         
         
         <script>
