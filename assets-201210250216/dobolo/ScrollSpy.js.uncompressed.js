@@ -1,4 +1,4 @@
-define("dobolo/Scrollspy", [
+define("dobolo/ScrollSpy", [
     "dojo/_base/declare",
     "./ScrollTopSpyHelper",
     "dojo/_base/window",
