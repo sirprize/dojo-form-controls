@@ -1392,7 +1392,8 @@ require([
     "use strict";
     
     parser.parse();
-    hljs.initHighlightingOnLoad();
+    //hljs.initHighlightingOnLoad();
+    window.prettyPrint && prettyPrint();
     
     var affix = new Affix({
         offsetTop: function () {

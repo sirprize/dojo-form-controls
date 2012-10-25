@@ -1930,6 +1930,10 @@
 				{
 					 location:"../frontend-styles",
 					 name:"frontend-styles"
+				},
+				{
+					 location:"../other",
+					 name:"other"
 				}
 		]
 });require({cache:{

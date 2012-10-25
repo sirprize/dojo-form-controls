@@ -14,36 +14,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/solarized_dark.min.css">
         
-        
-            <link rel="stylesheet" href="assets-201210250216/frontend-styles/bootstrap-common.css">
-            <link rel="stylesheet" href="assets-201210250216/frontend-styles/bootstrap-responsive.css">
-            <link rel="stylesheet" href="assets-201210250216/frontend-styles/bootstrap-docs.css">
-        
-        
+
+
+    <link rel="stylesheet" href="assets-201210251156/frontend-styles/bootstrap-common.css">
+    <link rel="stylesheet" href="assets-201210251156/frontend-styles/bootstrap-responsive.css">
+    <link rel="stylesheet" href="assets-201210251156/frontend-styles/bootstrap-docs.css">
+    <link rel="stylesheet" href="assets-201210251156/other/google-code-prettify/prettify.css">
+
         <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
     </head>
 
     <body>
-
-        <!-- Navbar -->
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <!--<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></button> <a class="brand" href="./index.html">Bootstrap</a>-->
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="">
-                                <a href="http://github.com/sirprize/dijitive">Dijitive on Github</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="navbar-inner">
+        <div class="container">
+            <!--<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></button> <a class="brand" href="./index.html">Bootstrap</a>-->
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://github.com/sirprize/dijitive">Dijitive on Github</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
+</div>
 
         <!-- Subhead -->
         <header class="jumbotron subhead" id="overview">
@@ -92,7 +90,7 @@
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+                        <pre class="prettyprint linenums">&lt;script&gt;
     var buttonOnClick = function (ev) {
         console.info('Clicked');
     }
@@ -100,23 +98,21 @@
 
 &lt;button class=&quot;btn btn-success&quot; data-dojo-type=&quot;dijitive/Button&quot; data-dojo-props=&quot;onClick: buttonOnClick&quot;&gt;
     &lt;i class=&quot;icon-music icon-white&quot;&gt;&lt;/i&gt; Click Click
-&lt;/button&gt;</code></pre>
+&lt;/button&gt;</pre>
                         
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Button&quot;], function (Button) {
-    var button1 = new Button({
-        type: 'submit',
-        'class': 'btn btn-primary',
-        label: '&lt;i class=&quot;icon-music icon-white&quot;&gt;&lt;/i&gt; Click Click',
-        onClick: function (e) {
-            console.info('Clicked?');
-            return false;
-        }
-    }, 'my-button');
+                        <pre class="prettyprint linenums">var b = new Button({
+    type: 'submit',
+    'class': 'btn btn-primary',
+    label: '&lt;i class=&quot;icon-music icon-white&quot;&gt;&lt;/i&gt; Click Click',
+    onClick: function (e) {
+        console.info('Clicked?');
+        return false;
+    }
+}, 'my-button');
 
-    button1.startup();
-});</code></pre>
+b.startup();</pre>
                     </section>
                     
                     <!-- Checkbox -->
@@ -138,28 +134,26 @@
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+                        <pre class="prettyprint linenums">&lt;script&gt;
     var checkboxOnChange = function (ev) {
         console.info('Value is: ' + this.get('value'));
     }
 &lt;/script&gt;
 
-&lt;input type=&quot;checkbox&quot; name=&quot;extraCheese&quot; value=&quot;on&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Checkbox&quot; data-dojo-props=&quot;onChange: checkboxOnChange&quot;/&gt;</code></pre>
+&lt;input type=&quot;checkbox&quot; name=&quot;extraCheese&quot; value=&quot;on&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Checkbox&quot; data-dojo-props=&quot;onChange: checkboxOnChange&quot;/&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Checkbox&quot;], function (Checkbox) {
-    var checkbox1 = new Checkbox({
-        name: 'menu',
-        value: 'clam chowder',
-        checked: true,
-        onChange: function (e) {
-            console.info('Value is: ' + this.get('value'));
-        }
-    }, 'checkbox1');
-    
-    checkbox1.startup();
-});</code></pre>
+                        <pre class="prettyprint linenums">var cb = new Checkbox({
+    name: 'menu',
+    value: 'clam chowder',
+    checked: true,
+    onChange: function (e) {
+        console.info('Value is: ' + this.get('value'));
+    }
+}, 'cb');
+
+cb.startup();</pre>
                     </section>
                     
                     <!-- Radio -->
@@ -186,7 +180,7 @@
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+                        <pre class="prettyprint linenums">&lt;script&gt;
     var radio1OnChange = function (ev) {
         console.info('Value is: ' + this.get('value'));
     }
@@ -197,22 +191,20 @@
 &lt;/script&gt;
 
 &lt;input type=&quot;radio&quot; name=&quot;s&quot; value=&quot;large&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio1OnChange&quot;/&gt;
-&lt;input type=&quot;radio&quot; name=&quot;s&quot; value=&quot;small&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio2OnChange&quot;/&gt;</code></pre>
+&lt;input type=&quot;radio&quot; name=&quot;s&quot; value=&quot;small&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio2OnChange&quot;/&gt;</pre>
                         
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Radio&quot;], function (Radio) {
-    var radio = new Radio({
-        name: 'size',
-        value: 'large',
-        checked: true,
-        onChange: function (e) {
-            console.info('Value is: ' + this.get('value'));
-        }
-    }, 'radio');
-    
-    radio.startup();
-});</code></pre>
+                        <pre class="prettyprint linenums">var r = new Radio({
+    name: 'size',
+    value: 'large',
+    checked: true,
+    onChange: function (e) {
+        console.info('Value is: ' + this.get('value'));
+    }
+}, 'radio');
+
+r.startup();</pre>
                     </section>
                     
                     <!-- Select -->
@@ -245,7 +237,7 @@
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;select name=&quot;meal3&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+                        <pre class="prettyprint linenums">&lt;select name=&quot;meal3&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
     &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
     &lt;option value=&quot;steak-and-lobster&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
     &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
@@ -262,39 +254,37 @@
     &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;message&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
         console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
     &lt;/script&gt;
-&lt;/select&gt;</code></pre>
+&lt;/select&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Select&quot;], function (Select) {
-    var options = [
-        { value: '', label: 'Please select' },
-        { value: &quot;steak-and-lobster&quot;, label: &quot;Steak &amp; Lobster&quot; },
-        { value: &quot;clam-chowder&quot;, label: &quot;Clam Chowder&quot; },
-        { value: &quot;pizza&quot;, label: &quot;Pizza&quot;, disabled: true },
-        { value: &quot;pasta&quot;, label: &quot;Pasta&quot; }
-    ];
-    
-    var select1 = new Select({
-        name: 'meal1',
-        value: 'pasta',
-        options: options,
-        required: true,
-        onChange: function (value) {
-            console.info('select.onChange(): ' + value)
-        }
-    }, 'select1');
-    
-    select1.watch('value', function (prop, oldVal, val) {
-        console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
-    });
-    
-    select1.watch('message', function (prop, oldVal, val) {
-        console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
-    });
-    
-    select1.startup();
-});</code></pre>
+                        <pre class="prettyprint linenums">var options = [
+    { value: '', label: 'Please select' },
+    { value: &quot;steak-and-lobster&quot;, label: &quot;Steak &amp; Lobster&quot; },
+    { value: &quot;clam-chowder&quot;, label: &quot;Clam Chowder&quot; },
+    { value: &quot;pizza&quot;, label: &quot;Pizza&quot;, disabled: true },
+    { value: &quot;pasta&quot;, label: &quot;Pasta&quot; }
+];
+
+var s = new Select({
+    name: 'meal1',
+    value: 'pasta',
+    options: options,
+    required: true,
+    onChange: function (value) {
+        console.info('select.onChange(): ' + value)
+    }
+}, 's');
+
+s.watch('value', function (prop, oldVal, val) {
+    console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
+});
+
+s.watch('message', function (prop, oldVal, val) {
+    console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+});
+
+s.startup();</pre>
                         
                         <div class="bs-docs-example">
                             <select name="meal4" multiple="true" data-dojo-type="dijitive/Select" required="true">
@@ -319,7 +309,7 @@
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;select name=&quot;meal4&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+                        <pre class="prettyprint linenums">&lt;select name=&quot;meal4&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
     &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
     &lt;option value=&quot;steak-and-lobster&quot; selected=&quot;selected&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
     &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
@@ -336,40 +326,38 @@
     &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;message&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
         console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
     &lt;/script&gt;
-&lt;/select&gt;</code></pre>
+&lt;/select&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Select&quot;], function (Select) {
-    var options = [
-        { value: '', label: 'Please select' },
-        { value: &quot;steak-and-lobster&quot;, label: &quot;Steak &amp; Lobster&quot; },
-        { value: &quot;clam-chowder&quot;, label: &quot;Clam Chowder&quot; },
-        { value: &quot;pizza&quot;, label: &quot;Pizza&quot;, disabled: true },
-        { value: &quot;pasta&quot;, label: &quot;Pasta&quot; }
-    ];
-    
-    var select2 = new Select({
-        multiple: true,
-        name: 'meal2',
-        value: ['steak-and-lobster', 'clam-chowder'],
-        options: options,
-        required: true,
-        onChange: function (value) {
-            console.info('select.onChange(): ' + value)
-        }
-    }, 'select2');
-    
-    select2.watch('value', function (prop, oldVal, val) {
-        console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
-    });
-    
-    select2.watch('message', function (prop, oldVal, val) {
-        console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
-    });
-    
-    select2.startup();
-});</code></pre>
+                        <pre class="prettyprint linenums">var options = [
+    { value: '', label: 'Please select' },
+    { value: &quot;steak-and-lobster&quot;, label: &quot;Steak &amp; Lobster&quot; },
+    { value: &quot;clam-chowder&quot;, label: &quot;Clam Chowder&quot; },
+    { value: &quot;pizza&quot;, label: &quot;Pizza&quot;, disabled: true },
+    { value: &quot;pasta&quot;, label: &quot;Pasta&quot; }
+];
+
+var s = new Select({
+    multiple: true,
+    name: 'meal2',
+    value: ['steak-and-lobster', 'clam-chowder'],
+    options: options,
+    required: true,
+    onChange: function (value) {
+        console.info('select.onChange(): ' + value)
+    }
+}, 's');
+
+s.watch('value', function (prop, oldVal, val) {
+    console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
+});
+
+s.watch('message', function (prop, oldVal, val) {
+    console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+});
+
+s.startup();</pre>
                     </section>
                     
                     <!-- Textarea -->
@@ -395,7 +383,7 @@
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+                        <pre class="prettyprint linenums">&lt;script&gt;
     var textareaOnKeyPress = function (ev) {
         console.info('Key pressed')
     }
@@ -405,27 +393,25 @@
     }
 &lt;/script&gt;
 
-&lt;textarea name=&quot;note&quot; data-dojo-type=&quot;dijitive/Textarea&quot; data-dojo-props=&quot;onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, propercase: true&quot;&gt;&lt;/textarea&gt;</code></pre>
+&lt;textarea name=&quot;note&quot; data-dojo-type=&quot;dijitive/Textarea&quot; data-dojo-props=&quot;onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, propercase: true&quot;&gt;&lt;/textarea&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Textarea&quot;], function (Textarea) {
-    var textarea1 = new Textarea({
-        name: 'note',
-        autocomplete: false,
-        uppercase: true,
-        trim: true,
-        onKeyPress: function (ev) {
-            console.info('Key pressed')
-        }
-    }, 'textarea1');
+                        <pre class="prettyprint linenums">var ta = new Textarea({
+    name: 'note',
+    autocomplete: false,
+    uppercase: true,
+    trim: true,
+    onKeyPress: function (ev) {
+        console.info('Key pressed')
+    }
+}, 'ta');
 
-    textarea1.startup();
-    
-    textarea1.watch('value', function (name, oldVal, val) {
-        console.info('New value is &quot;' + val);
-    });
-});</code></pre>
+ta.startup();
+
+ta.watch('value', function (name, oldVal, val) {
+    console.info('New value is &quot;' + val);
+});</pre>
                     </section>
                     
                     <!-- ExpandingTextarea -->
@@ -451,7 +437,7 @@
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+                        <pre class="prettyprint linenums">&lt;script&gt;
     var expandingTextareaOnKeyPress = function (ev) {
         console.info('Key pressed')
     }
@@ -461,26 +447,24 @@
     }
 &lt;/script&gt;
 
-&lt;textarea name=&quot;note&quot; data-dojo-type=&quot;dijitive/ExpandingTextarea&quot; data-dojo-props=&quot;onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, uppercase: true, trim: true&quot;&gt;&lt;/textarea&gt;</code></pre>
+&lt;textarea name=&quot;note&quot; data-dojo-type=&quot;dijitive/ExpandingTextarea&quot; data-dojo-props=&quot;onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, uppercase: true, trim: true&quot;&gt;&lt;/textarea&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/ExpandingTextarea&quot;], function (ExpandingTextarea) {
-    var expandingTextarea1 = new ExpandingTextarea({
-        name: 'note',
-        uppercase: true,
-        trim: true,
-        onKeyPress: function (ev) {
-            console.info('key pressed')
-        }
-    }, 'expandingTextarea1');
+                        <pre class="prettyprint linenums">var ta = new ExpandingTextarea({
+    name: 'note',
+    uppercase: true,
+    trim: true,
+    onKeyPress: function (ev) {
+        console.info('key pressed')
+    }
+}, 'ta');
 
-    expandingTextarea1.startup();
-    
-    expandingTextarea1.watch('value', function (name, oldVal, val) {
-        console.info('New value is &quot;' + val);
-    });
-});</code></pre>
+ta.startup();
+
+ta.watch('value', function (name, oldVal, val) {
+    console.info('New value is &quot;' + val);
+});</pre>
                     </section>
                     
                     <!-- Textbox -->
@@ -506,7 +490,7 @@
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-html">&lt;script&gt;
+                        <pre class="prettyprint linenums">&lt;script&gt;
     var textboxOnKeyPress = function (ev) {
         console.info('Key pressed')
     }
@@ -516,72 +500,68 @@
     }
 &lt;/script&gt;
 
-&lt;input type=&quot;text&quot; name=&quot;title&quot; data-dojo-type=&quot;dijitive/Textbox&quot; data-dojo-props=&quot;onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, uppercase: true, trim: true&quot;/&gt;</code></pre>
+&lt;input type=&quot;text&quot; name=&quot;title&quot; data-dojo-type=&quot;dijitive/Textbox&quot; data-dojo-props=&quot;onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, uppercase: true, trim: true&quot;/&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums"><code class="language-javascript">require([&quot;dijitive/Textbox&quot;], function (Textbox) {
-    var textbox1 = new Textbox({
-        name: 'title',
-        placeHolder: 'Your title',
-        autocomplete: false,
-        uppercase: true,
-        trim: true,
-        onKeyPress: function (ev) {
-            console.info('Key pressed')
-        }
-    }, 'textbox1');
+                        <pre class="prettyprint linenums">var tb = new Textbox({
+    name: 'title',
+    placeHolder: 'Your title',
+    autocomplete: false,
+    uppercase: true,
+    trim: true,
+    onKeyPress: function (ev) {
+        console.info('Key pressed')
+    }
+}, 'tb');
 
-    textbox1.startup();
-    
-    textbox1.watch('value', function (name, oldVal, val) {
-        console.info('New value is &quot;' + val);
-    });
-});</code></pre>
+tb.startup();
+
+tb.watch('value', function (name, oldVal, val) {
+    console.info('New value is &quot;' + val);
+});</pre>
                     </section>
                 </div>
             </div>
         </div>
         
-        <!-- Footer -->
         <footer class="footer">
-            <div class="container">
-                <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>Big thanks go out to the <a href="http://dojotoolkit.org">Dojo community</a> and the <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap crew</a></p>
-                <p>dijitive is written by <a href="http://sirprize.me">Sir Prize</a> and it is released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
-                <p>This project is hosted on <a href="http://github.com/sirprize/dijitive">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dijitive-doc-generator">dijitive-doc-generator</a></p>
-                
-            </div>
-        </footer>
+    <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Big thanks go out to the <a href="http://dojotoolkit.org">Dojo community</a> and the <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap crew</a></p>
+        <p>dijitive is written by <a href="http://sirprize.me">Sir Prize</a> and it is released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+        <p>This project is hosted on <a href="http://github.com/sirprize/dijitive">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dijitive-doc-generator">dijitive-doc-generator</a></p>
         
-        <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+    </div>
+</footer>
         
-        
-            <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201210250216/dojo/dojo.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/event.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/promise.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/browser.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/ajax.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/dom-common.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/dom-extra.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/widget-common.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/widget-extra.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/form-click.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/form-select.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/layer/form-text.js"></script>
-            <script type="text/javascript" src="assets-201210250216/frontend/index.js"></script>
-        
-        
-        <script>
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-35397940-1']);
-            _gaq.push(['_trackPageview']);
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
+
+    <script src="assets-201210251156/other/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201210251156/dojo/dojo.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/event.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/promise.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/browser.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/ajax.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/dom-common.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/dom-extra.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/widget-common.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/widget-extra.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/form-click.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/form-select.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/layer/form-text.js"></script>
+    <script type="text/javascript" src="assets-201210251156/frontend/index.js"></script>
+
+        <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35397940-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
     </body>
 </html>
