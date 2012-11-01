@@ -19,9 +19,9 @@ define([
         
         templateString: '<input ${!nameAttrSetting} type="${type}" ${checkedAttrSetting} data-dojo-attach-point="containerNode,focusNode" />',
         
-        postMixInProperties: function(){
+        postMixInProperties: function() {
             this.inherited(arguments);
-
+            
             // Need to set initial checked state as part of template, so that form submit works.
             // domAttr.set(node, "checked", bool) doesn't work on IE until node has been attached
             // to <body>, see #8666
@@ -43,10 +43,10 @@ define([
             }
             
             if (value) {
-                domAttr.set(this.domNode, 'checked', 'checked');
+                this.checkedAttrSetting = "checked";
                 domAttr.set(this.domNode, 'aria-checked', 'true');
             } else {
-                domAttr.set(this.domNode, 'checked', '');
+                this.checkedAttrSetting = "";
                 domAttr.set(this.domNode, 'aria-checked', 'false');
             }
             
