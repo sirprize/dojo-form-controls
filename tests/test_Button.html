@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dijitive/Button</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <a href="index.html">Back to overview</a>
+            
+            <h1>dijitive/Button</h1>
+            
+            <h3>Click &amp; Submit</h3>
+            <form method="get" action="/">
+                <button id="w1"></button>
+            </form>
+        
+            <hr />
+            
+            <h3>Click &amp; Don't Submit</h3>
+            <form method="get" action="/">
+                <button id="w2"></button>
+            </form>
+        
+            <hr />
+            
+            <h3>Large Button With Icon</h3>
+            <button id="w3"></button>
+        
+            <hr />
+            
+            <h3>Icon Only</h3>
+            <button id="w4"></button>
+            
+            <hr />
+            
+            <h3>Declarative</h3>
+            <button class="btn btn-success" data-dojo-type="dijitive/Button"><i class="icon-music icon-white"></i> La La Laaaa</button>
+            
+            <hr />
+        </div>
+        
+        <script type="text/javascript" src="config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+        <script>
+            require([
+                "dijitive/Button",
+                "dojo/parser",
+                "dojo/domReady!"
+            ], function (
+                Button,
+                parser
+            ) {
+                "use strict";
+
+                var w1 = new Button({
+                    type: 'submit',
+                    'class': 'btn btn-primary',
+                    label: 'Click',
+                    onClick: function (e) {
+                        console.log('clicked');
+                        return true; // if type=submit, submit of parent form/widget can be canceled by returning false
+                    }
+                }, 'w1');
+
+                w1.startup();
+
+                var w2 = new Button({
+                    type: 'submit',
+                    'class': 'btn btn-danger',
+                    label: 'Click',
+                    onClick: function (e) {
+                        console.log('clicked');
+                        return false; // if type=submit, submit of parent form/widget can be canceled by returning false
+                    }
+                }, 'w2');
+
+                w2.startup();
+
+                var w3 = new Button({
+                    'class': 'btn btn-inverse',
+                    label: '<i class="icon-home icon-white"></i> Click',
+                    onClick: function (e) {
+                        console.log('clicked');
+                    }
+                }, 'w3');
+
+                w3.startup();
+
+                var w4 = new Button({
+                    'class': 'btn',
+                    label: '<i class="icon-ok"></i>',
+                    onClick: function (e) {
+                        console.log('clicked');
+                    }
+                }, 'w4');
+
+                w4.startup();
+            });
+        </script>
+    </body>
+</html>

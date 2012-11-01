@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dijitive/Checkbox</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <a href="index.html">Back to overview</a>
+            
+            <h1>dijitive/Checkbox</h1>
+            
+            <h3>Checked</h3>
+            <input type="checkbox" id="w1"/>
+            
+            <hr />
+            
+            <h3>Disabled</h3>
+            <input type="checkbox" id="w3"/>
+            
+            <hr />
+            
+            <h3>Declarative</h3>
+            <input type="checkbox" name="xxx" value="baconfat" data-dojo-type="dijitive/Checkbox" />
+            
+            <hr />
+        </div>
+        
+        <script type="text/javascript" src="config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+        
+        <script>
+            require([
+                "dijitive/Checkbox",
+                "dojo/parser",
+                "dojo/domReady!"
+            ], function (
+                Checkbox,
+                parser
+            ) {
+                "use strict";
+
+                var w1 = new Checkbox({
+                    name: 'xxx',
+                    value: 'clam chowder',
+                    checked: true,
+                    onChange: function (e) {
+                        console.log('value is: ' + this.get('value'));
+                    }
+                }, 'w1');
+
+                w1.startup();
+
+
+                var w3 = new Checkbox({
+                    name: 'zzz',
+                    disabled: true,
+                    value: 'clam chowder',
+                    checked: false,
+                    onChange: function (e) {
+                        console.log('value is: ' + this.get('value'));
+                    }
+                }, 'w3');
+
+                w3.startup();
+            });
+        </script>
+    </body>
+</html>

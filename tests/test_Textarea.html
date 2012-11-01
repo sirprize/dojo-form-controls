@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dijitive/Textarea</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <a href="index.html">Back to overview</a>
+            
+            <h1>dijitive/Textarea</h1>
+            
+            <h3>Simple With Uppercase Filter</h3>
+            <textarea id="w1"></textarea>
+            
+            <hr />
+            
+            <h3>Declarative</h3>
+            <textarea data-dojo-type="dijitive/Textarea" name="xxx"></textarea>
+        </div>
+        
+        <script type="text/javascript" src="config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+        <script>
+            require([
+                "dijitive/Textarea",
+                "dojo/parser",
+                "dojo/domReady!"
+            ], function (
+                Textarea,
+                parser
+            ) {
+                "use strict";
+
+                var w1 = new Textarea({
+                    name: 'xxx',
+                    placeHolder: 'Say hello',
+                    autocomplete: false,
+                    uppercase: true,
+                    onKeyPress: function (ev) {
+                        console.log('key pressed')
+                    }
+                }, 'w1');
+
+                w1.startup();
+
+                w1.watch('value', function (name, oldVal, val) {
+                    console.log('New value is "' + val);
+                });
+            });
+        </script>
+    </body>
+</html>
