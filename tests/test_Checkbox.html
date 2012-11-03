@@ -12,18 +12,15 @@
             
             <h1>dijitive/Checkbox</h1>
             
-            <h3>Checked</h3>
-            <input type="checkbox" id="w1"/>
-            
-            <hr />
-            
-            <h3>Disabled</h3>
-            <input type="checkbox" id="w3"/>
+            <h3>Programmatic</h3>
+            <input type="checkbox" id="pro1"/>
+            <input type="checkbox" id="pro2"/>
             
             <hr />
             
             <h3>Declarative</h3>
-            <input type="checkbox" name="xxx" value="baconfat" data-dojo-type="dijitive/Checkbox" />
+            <input type="checkbox" name="dec1" value="on" data-dojo-type="dijitive/Checkbox" checked="true"/>
+            <input type="checkbox" name="dec2" value="on" data-dojo-type="dijitive/Checkbox" />
             
             <hr />
         </div>
@@ -42,29 +39,28 @@
             ) {
                 "use strict";
 
-                var w1 = new Checkbox({
-                    name: 'xxx',
-                    value: 'clam chowder',
+                var pro1 = new Checkbox({
+                    name: 'pro1',
+                    value: 'on',
                     checked: true,
                     onChange: function (e) {
                         console.log('value is: ' + this.get('value'));
                     }
-                }, 'w1');
+                }, 'pro1');
 
-                w1.startup();
+                pro1.startup();
 
-
-                var w3 = new Checkbox({
-                    name: 'zzz',
+                var pro2 = new Checkbox({
+                    name: 'pro2',
                     disabled: true,
-                    value: 'clam chowder',
+                    value: 'on',
                     checked: false,
                     onChange: function (e) {
                         console.log('value is: ' + this.get('value'));
                     }
-                }, 'w3');
+                }, 'pro2');
 
-                w3.startup();
+                pro2.startup();
             });
         </script>
     </body>

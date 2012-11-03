@@ -12,21 +12,16 @@
             
             <h1>dijitive/Radio</h1>
             
-            <h3>Group</h3>
-            <input type="radio" id="w1"/>
-            <input type="radio" id="w2"/>
-            
-            <hr />
-            
-            <h3>Disabled</h3>
-            <input type="radio" id="w3"/>
-            <input type="radio" id="w4"/>
-            
-            <hr />
+            <h3>Programmatic</h3>
+            <input type="radio" id="pro1"/>
+            <input type="radio" id="pro2"/>
+            <p>Disabled</p>
+            <input type="radio" id="pro3"/>
+            <input type="radio" id="pro4"/>
             
             <h3>Declarative</h3>
-            <input type="radio" name="zzz" value="baconfat" data-dojo-type="dijitive/Radio" />
-            <input type="radio" name="zzz" value="cowtongue" data-dojo-type="dijitive/Radio" />
+            <input type="radio" name="stuff" value="baconfat" data-dojo-type="dijitive/Radio" />
+            <input type="radio" name="stuff" value="cowtongue" data-dojo-type="dijitive/Radio" />
             
             <hr />
         </div>
@@ -44,54 +39,51 @@
             ) {
                 "use strict";
 
-                var w1 = new Radio({
-                    name: 'xxx',
-                    value: 'clam chowder',
+                var pro1 = new Radio({
+                    name: 'other',
+                    value: 'baconfat',
                     //checked: true,
                     onChange: function (e) {
                         console.log('value is: ' + this.get('value'));
                     }
-                }, 'w1');
+                }, 'pro1');
 
-                w1.startup();
+                pro1.startup();
 
-                var w2 = new Radio({
-                    name: 'xxx',
-                    value: 'lobster & steak',
+                var pro2 = new Radio({
+                    name: 'other',
+                    value: 'cowtongue',
                     checked: true,
                     onChange: function (e) {
                         console.log('value is: ' + this.get('value'));
                     }
-                }, 'w2');
+                }, 'pro2');
 
-                w2.startup();
-
-
-
-
-                var w3 = new Radio({
-                    name: 'yyy',
+                pro2.startup();
+                
+                var pro3 = new Radio({
+                    name: 'that',
                     disabled: true,
-                    value: 'clam chowder',
+                    value: 'baconfat',
                     checked: true,
                     onChange: function (e) {
                         console.log('value is: ' + this.get('value'));
                     }
-                }, 'w3');
+                }, 'pro3');
 
-                w3.startup();
+                pro3.startup();
 
-                var w4 = new Radio({
-                    name: 'yyy',
+                var pro4 = new Radio({
+                    name: 'that',
                     disabled: true,
-                    value: 'lobster & steak',
+                    value: 'cowtongue',
                     checked: false,
                     onChange: function (e) {
                         console.log('value is: ' + this.get('value'));
                     }
-                }, 'w4');
+                }, 'pro4');
 
-                w4.startup();
+                pro4.startup();
             });
         </script>
     </body>

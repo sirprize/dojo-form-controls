@@ -11,26 +11,31 @@
             <a href="index.html">Back to overview</a>
             
             <h1>dijitive/Select</h1>
-            <h3>Simple</h3>
-            <select id="w1"></select><hr />
-            <h3>Multiple</h3>
-            <select id="w2"></select><hr />
-            <h3>Backed by synchronous store</h3>
-            <select id="w3"></select><hr />
-            <h3>Backed by asynchronous store</h3>
-            <select id="w4"></select><hr />
-            <h3>Disabled</h3>
-            <select id="w5"></select>
+            
+            <h3>Programmatic</h3>
+            <p>Single</p>
+            <select id="pro1"></select>
+            <p>Multiple</p>
+            <select id="pro2"></select>
+            <p>Backed by synchronous store</p>
+            <select id="pro3"></select>
+            <p>Backed by asynchronous store</p>
+            <select id="pro4"></select>
+            <p>Disabled</p>
+            <select id="pro5"></select>
+            
             <h3>Declarative</h3>
-            <select id="w6" name="yoyo" data-dojo-type="dijitive/Select" required="true">
+            <p>Single</p>
+            <select id="dec1" name="dec1" data-dojo-type="dijitive/Select" required="true">
                 <option value="">Please select</option>
                 <option value="a">A</option>
                 <option value="b" selected="selected">B</option>
                 <option value="c" disabled="true">C</option>
                 <option value="d">D</option>
             </select>
-            <h3>Declarative (multiple)</h3>
-            <select id="w7" name="yoyo" data-dojo-type="dijitive/Select" multiple="true" required="true">
+            
+            <p>Multiple</p>
+            <select id="dec2" name="dec2" data-dojo-type="dijitive/Select" multiple="true" required="true">
                 <option value="">Please select</option>
                 <option value="a" selected="selected">A</option>
                 <option value="b" selected="selected">B</option>
@@ -67,193 +72,162 @@
                 parser.parse();
 
                 var options = [
-                    {
-                        value: '',
-                        label: 'Please select'
-                    },
-                    {
-                        value: "a",
-                        label: "A"
-                    },
-                    {
-                        value: "b",
-                        label: "B"
-                    },
-                    {
-                        value: "c",
-                        label: "C",
-                        disabled: true
-                    },
-                    {
-                        value: "d",
-                        label: "D"
-                    }
+                    { value: '', label: 'Please select' },
+                    { value: "a", label: "A" },
+                    { value: "b", label: "B" },
+                    { value: "c", label: "C", disabled: true },
+                    { value: "d", label: "D" }
                 ];
-
+                
                 var sStore = new ObjectStore(new Memory({
                     data: [
-                        {
-                            id: "",
-                            label: 'Please select'
-                        },
-                        {
-                            id: "a",
-                            label: "A"
-                        },
-                        {
-                            id: "b",
-                            label: "B"
-                        },
-                        {
-                            id: "c",
-                            label: "C"
-                        },
-                        {
-                            id: "d",
-                            label: "D"
-                        }
+                        { id: '', label: 'Please select' },
+                        { id: "a", label: "A" },
+                        { id: "b", label: "B" },
+                        { id: "c", label: "C" },
+                        { id: "d", label: "D" }
                     ]
                 }));
 
                 var aStore = new ObjectStore(new JsonRest({
                     target: 'test_Select.json'
                 }));
-
+                
                 // simple
-                var w1 = new Select({
+                var pro1 = new Select({
                     baseClass: 'a-simple-select',
-                    name: 'xxx',
-                    value: 'a',
+                    name: 'pro1',
+                    value: 'b',
                     options: options,
                     required: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
-                }, 'w1');
+                }, 'pro1');
 
-                w1.watch('value', function (prop, oldVal, val) {
+                pro1.watch('value', function (prop, oldVal, val) {
                     console.log('watch("value")', prop, oldVal, val);
                 });
 
-                w1.watch('message', function (prop, oldVal, val) {
+                pro1.watch('message', function (prop, oldVal, val) {
                     console.log('watch("message"):', val);
                 });
 
-                w1.startup();
+                pro1.startup();
 
                 // multiple
-                var w2 = new Select({
+                var pro2 = new Select({
                     multiple: true,
-                    name: 'yyy',
+                    name: 'pro2',
                     value: ['a', 'd'],
                     options: options,
                     required: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
-                }, 'w2');
+                }, 'pro2');
 
-                w2.watch('value', function (prop, oldVal, val) {
+                pro2.watch('value', function (prop, oldVal, val) {
                     console.log('watch("value"):', val);
                 });
 
-                w2.watch('message', function (prop, oldVal, val) {
+                pro2.watch('message', function (prop, oldVal, val) {
                     console.log('watch("message"):', val);
                 });
 
-                w2.startup();
+                pro2.startup();
 
                 // multiple backed by synchronous store
-                var w3 = new Select({
+                var pro3 = new Select({
                     multiple: true,
-                    name: 'xxx',
+                    name: 'pro3',
                     value: 'a',
                     store: sStore,
                     required: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
-                }, 'w3');
+                }, 'pro3');
 
-                w3.watch('value', function (prop, oldVal, val) {
+                pro3.watch('value', function (prop, oldVal, val) {
                     console.log('watch("value"):', val);
                 });
 
-                w3.watch('message', function (prop, oldVal, val) {
+                pro3.watch('message', function (prop, oldVal, val) {
                     console.log('watch("message"):', val);
                 });
 
-                w3.startup();
+                pro3.startup();
 
                 setTimeout(function () {
-                    //w3.set('value', ['b','d']);
+                    //pro3.set('value', ['b','d']);
                 }, 1000)
 
                 // simple backed by asynchronous store
-                var w4 = new Select({
-                    name: 'xxx',
+                var pro4 = new Select({
+                    name: 'pro4',
                     value: 'd',
                     store: aStore,
                     required: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
-                }, 'w4');
+                }, 'pro4');
 
-                w4.watch('value', function (prop, oldVal, val) {
+                pro4.watch('value', function (prop, oldVal, val) {
                     console.log('watch("value"):', val);
                 });
 
-                w4.watch('message', function (prop, oldVal, val) {
+                pro4.watch('message', function (prop, oldVal, val) {
                     console.log('watch("message"):', val);
                 });
 
-                w4.startup();
+                pro4.startup();
 
                 // disabled
-                var w5 = new Select({
-                    name: 'zzz',
+                var pro5 = new Select({
+                    name: 'pro5',
                     value: 'a',
                     options: options,
                     disabled: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
-                }, 'w5');
+                }, 'pro5');
 
-                w5.watch('value', function (prop, oldVal, val) {
+                pro5.watch('value', function (prop, oldVal, val) {
                     console.log('watch("value"):', val);
                 });
 
-                w5.watch('message', function (prop, oldVal, val) {
+                pro5.watch('message', function (prop, oldVal, val) {
                     console.log('watch("message"):', val);
                 });
 
-                w5.startup();
+                pro5.startup();
 
                 // declarative single
-                registry.byId('w6').onChange = function (value) {
+                registry.byId('dec1').onChange = function (value) {
                     console.log('onChange(): ' + value)
                 };
 
-                registry.byId('w6').watch('value', function (prop, oldVal, val) {
+                registry.byId('dec1').watch('value', function (prop, oldVal, val) {
                     console.log('watch("value"):', val);
                 });
 
-                registry.byId('w6').watch('message', function (prop, oldVal, val) {
+                registry.byId('dec1').watch('message', function (prop, oldVal, val) {
                     console.log('watch("message"):', val);
                 });
 
                 // declarative multiple
-                registry.byId('w7').onChange = function (value) {
+                registry.byId('dec2').onChange = function (value) {
                     console.log('onChange(): ' + value)
                 };
 
-                registry.byId('w7').watch('value', function (prop, oldVal, val) {
+                registry.byId('dec2').watch('value', function (prop, oldVal, val) {
                     console.log('watch("value"):', val);
                 });
 
-                registry.byId('w7').watch('message', function (prop, oldVal, val) {
+                registry.byId('dec2').watch('message', function (prop, oldVal, val) {
                     console.log('watch("message"):', val);
                 });
             });
