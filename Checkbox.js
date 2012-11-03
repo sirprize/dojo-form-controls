@@ -28,6 +28,14 @@ define([
             this.checkedAttrSetting = this.checked ? "checked" : "";
         },
         
+        _fillContent: function() {
+            // summary:
+            //      Get checked attribute on IE when instantiating declaratively
+            if (this.srcNodeRef && domAttr.has(this.srcNodeRef, 'data-dojo-type')) {
+                this.set('checked', this.srcNodeRef.checked);
+            }
+        },
+        
         postCreate: function () {
             this.own(on(this.domNode, 'change', lang.hitch(this, function (ev) {
                 this.set('checked', this.domNode.checked);
@@ -35,40 +43,17 @@ define([
         },
         
         _setCheckedAttr: function (value) {
-            if (this.get('readOnly')) {
-                // this attribute is ignored in HTML5 - we could make it readonly here
-                // not sure yet...
-                //this.domNode.checked = (this.get('checked'));
-                //value = this.get('checked');
-            }
-            
-            if (value) {
-                this.checkedAttrSetting = "checked";
-                domAttr.set(this.domNode, 'aria-checked', 'true');
-            } else {
-                this.checkedAttrSetting = "";
-                domAttr.set(this.domNode, 'aria-checked', 'false');
-            }
-            
             this._set("checked", (value));
             this._handleOnChange((value));
         },
-        /*
-        _setReadOnlyAttr: function (value) {
-            // note:
-            //      this attribute is ignored in HTML5
-            this._set("readOnly", value);
-            domAttr.set(this.domNode, 'readonly', value ? 'true' : 'false');
-            this.focusNode.setAttribute("aria-readonly", value ? 'true' : 'false');
-        },
-        */
+
         _getValueAttr: function(){
             // summary:
             //      Hook so get('value') works.
             // description:
             //      If the Checkbox is checked, returns the value attribute.
             //      Otherwise returns false.
-            return (this.checked ? this.value : false);
+            return this.checked ? this.value : false;
         }
     });
 });
