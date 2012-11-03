@@ -34,6 +34,16 @@ define([
         //      Currently displayed error/prompt message
         message: '',
         
+        _attrToDom: function(attr, value, commands) {
+            // summary:
+            //      _WidgetBase::_attrToDom() considers 'options' a standard attribute name
+            //      for <select> tags and adds the option objects as an attribute to the domNode.
+            //      We don't want that
+            if (attr !== 'options') {
+                this.inherited(arguments);
+            }
+        },
+        
         postMixInProperties: function () {
             // summary:
             //      set the missing message
@@ -43,12 +53,7 @@ define([
         },
         
         postCreate: function () {
-            // summary:
-            //      _WidgetBase::set() considers 'options' a standard attribute name
-            //      for <select> tags and adds the option objects as an attribute to the domNode.
-            //      We don't want that
             this.inherited(arguments);
-            domAttr.remove(this.domNode, 'options');
             
             this.own(on(this.domNode, 'change', lang.hitch(this, function (e) {
                 this._handleOnChange(this._getValueFromChildren());
