@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dijitive/ExpandingTextarea tests</title>
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="config.js"></script>
+        <script type="text/javascript" src="../vendor/dojo/dojo/dojo.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <a href="index.html">Back to overview</a>
+            
+            <h1>dijitive/ExpandingTextarea</h1>
+            
+            <textarea id="dec1" name="dec1" data-dojo-type="dijitive/ExpandingTextarea" data-dojo-props="uppercase: true, trim: true">   SoMe TeXt   </textarea>
+            <textarea id="dec2" name="dec2" data-dojo-type="dijitive/ExpandingTextarea" data-dojo-props="lowercase: true, trim: true">   SoMe TeXt   </textarea>
+            
+            <script>
+                require([
+                    "doh",
+                    "dijit/registry",
+                    "dijitive/ExpandingTextarea",
+                    "dojo/_base/lang",
+                    "dojo/_base/window",
+                    "dojo/on",
+                    "dojo/parser",
+                    "dojo/dom-construct",
+                    "dojo/dom-attr",
+                    "dojo/ready"
+                ], function (
+                    doh,
+                    registry,
+                    ExpandingTextarea,
+                    lang,
+                    baseWin,
+                    on,
+                    parser,
+                    domConstruct,
+                    domAttr,
+                    ready
+                ) {
+                    parser.parse();
+                    
+                    ready(function () {
+                        doh.register("declarative", [
+                            {
+                                name: "set/get(value) with uppercase formatter",
+                                runTest: function () {
+                                    var dec1 = registry.byId('dec1');
+                                    doh.is('SOME TEXT', dec1.get('value'), "value should be 'SOME TEXT");
+                                    dec1.set('value', 'AnD MoRe TeXt');
+                                    doh.is('AND MORE TEXT', dec1.domNode.value, "domNode value should be 'AND MORE TEXT");
+                                    doh.is('AND MORE TEXT', dec1.get('value'), "value should be 'AND MORE TEXT");
+                                }
+                            },
+                            {
+                                name: "set/get(value) with lowercase formatter",
+                                runTest: function () {
+                                    var dec2 = registry.byId('dec2');
+                                    doh.is('some text', dec2.get('value'), "value should be 'some text");
+                                    dec2.set('value', 'AnD MoRe TeXt');
+                                    doh.is('and more text', dec2.domNode.value, "domNode value should be 'and more text");
+                                    doh.is('and more text', dec2.get('value'), "value should be 'and more text");
+                                }
+                            },
+                            {
+                                name: "watch(value)",
+                                handle: null,
+                                runTest: function () {
+                                    var d = new doh.Deferred(),
+                                        dec2 = registry.byId('dec2');
+
+                                    this.handle = dec2.watch('value', function (prop, old, val) {
+                                        doh.is('second', val, "value should be 'second");
+                                        d.callback(true);
+                                    });
+                                    
+                                    dec2.set('value', 'second');
+                                    return d;
+                                },
+                                tearDown: function () {
+                                    this.handle.remove();
+                                }
+                            }
+                        ]);
+                        
+                        doh.register("programmatic", [
+                            {
+                                name: "set/get(value) with uppercase formatter",
+                                setUp: function () {
+                                    this.pro1 = new ExpandingTextarea({
+                                        id: 'pro1',
+                                        name: 'pro1',
+                                        trim: true,
+                                        uppercase: true,
+                                        value: '   SoMe TeXt   '
+                                    });
+                                    
+                                    this.pro1.placeAt(baseWin.body(), 'first');
+                                    this.pro1.startup();
+                                },
+                                runTest: function () {
+                                    doh.is('SOME TEXT', this.pro1.get('value'), "value should be 'SOME TEXT");
+                                    this.pro1.set('value', 'AnD MoRe TeXt');
+                                    doh.is('AND MORE TEXT', this.pro1.domNode.value, "domNode value should be 'AND MORE TEXT");
+                                    doh.is('AND MORE TEXT', this.pro1.get('value'), "value should be 'AND MORE TEXT");
+                                },
+                                tearDown: function () {
+                                    this.pro1.destroyRecursive();
+                                }
+                            },
+                            {
+                                name: "set/get(value) with lowercase formatter",
+                                setUp: function () {
+                                    this.pro2 = new ExpandingTextarea({
+                                        id: 'pro2',
+                                        name: 'pro2',
+                                        trim: true,
+                                        lowercase: true,
+                                        value: '   SoMe TeXt   '
+                                    });
+                                    
+                                    this.pro2.placeAt(baseWin.body(), 'first');
+                                    this.pro2.startup();
+                                },
+                                runTest: function () {
+                                    doh.is('some text', this.pro2.get('value'), "value should be 'some text");
+                                    this.pro2.set('value', 'AnD MoRe TeXt');
+                                    doh.is('and more text', this.pro2.domNode.value, "domNode value should be 'and more text");
+                                    doh.is('and more text', this.pro2.get('value'), "value should be 'and more text");
+                                },
+                                tearDown: function () {
+                                    this.pro2.destroyRecursive();
+                                }
+                            },
+                            {
+                                name: "watch(value)",
+                                timeout: 1000,
+                                setUp: function () {
+                                    this.pro3 = new ExpandingTextarea({
+                                        id: 'pro3',
+                                        name: 'pro3',
+                                        value: 'first'
+                                    });
+                                    
+                                    this.pro3.placeAt(baseWin.body(), 'first');
+                                    this.pro3.startup();
+                                },
+                                runTest: function () {
+                                    var d = new doh.Deferred();
+
+                                    this.pro3.watch('value', function (prop, old, val) {
+                                        doh.is('second', val, "value should be 'second");
+                                        d.callback(true);
+                                    });
+                                    
+                                    this.pro3.set('value', 'second');
+                                    return d;
+                                },
+                                tearDown: function () {
+                                    this.pro3.destroyRecursive();
+                                }
+                            }
+                        ]);
+                        
+                        doh.run();
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
