@@ -4,7 +4,7 @@ var profile = (function () {
             "dijitive/package": 1
         },
         amdExcludes = {},
-        isTestRe = /\/test\//
+        isTestRe = /\/tests\//
     ;
 
     return {
