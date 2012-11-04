@@ -17,10 +17,10 @@
         
 
 
-    <link rel="stylesheet" href="assets-201210251156/frontend-styles/bootstrap-common.css">
-    <link rel="stylesheet" href="assets-201210251156/frontend-styles/bootstrap-responsive.css">
-    <link rel="stylesheet" href="assets-201210251156/frontend-styles/bootstrap-docs.css">
-    <link rel="stylesheet" href="assets-201210251156/other/google-code-prettify/prettify.css">
+    <link rel="stylesheet" href="assets-201211041538/frontend-styles/bootstrap-common.css">
+    <link rel="stylesheet" href="assets-201211041538/frontend-styles/bootstrap-responsive.css">
+    <link rel="stylesheet" href="assets-201211041538/frontend-styles/bootstrap-docs.css">
+    <link rel="stylesheet" href="assets-201211041538/other/google-code-prettify/prettify.css">
 
         <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -102,7 +102,7 @@
                         
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums">var b = new Button({
+                        <pre class="prettyprint linenums">var pro1 = new Button({
     type: 'submit',
     'class': 'btn btn-primary',
     label: '&lt;i class=&quot;icon-music icon-white&quot;&gt;&lt;/i&gt; Click Click',
@@ -110,9 +110,9 @@
         console.info('Clicked?');
         return false;
     }
-}, 'my-button');
+}, 'pro1');
 
-b.startup();</pre>
+pro1.startup();</pre>
                     </section>
                     
                     <!-- Checkbox -->
@@ -129,7 +129,7 @@ b.startup();</pre>
     }
 </script>
 
-<input type="checkbox" name="extraCheese" value="on" checked="checked" data-dojo-type="dijitive/Checkbox" data-dojo-props="onChange: checkboxOnChange"/>
+<input type="checkbox" name="dec1" value="on" checked="checked" data-dojo-type="dijitive/Checkbox" data-dojo-props="onChange: checkboxOnChange"/>
                         </div>
                         
                         <h3>Declarative</h3>
@@ -140,20 +140,20 @@ b.startup();</pre>
     }
 &lt;/script&gt;
 
-&lt;input type=&quot;checkbox&quot; name=&quot;extraCheese&quot; value=&quot;on&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Checkbox&quot; data-dojo-props=&quot;onChange: checkboxOnChange&quot;/&gt;</pre>
+&lt;input type=&quot;checkbox&quot; name=&quot;dec1&quot; value=&quot;on&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Checkbox&quot; data-dojo-props=&quot;onChange: checkboxOnChange&quot;/&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums">var cb = new Checkbox({
-    name: 'menu',
-    value: 'clam chowder',
+                        <pre class="prettyprint linenums">var pro1 = new Checkbox({
+    name: 'pro1',
+    value: 'on',
     checked: true,
     onChange: function (e) {
         console.info('Value is: ' + this.get('value'));
     }
-}, 'cb');
+}, 'pro1');
 
-cb.startup();</pre>
+pro1.startup();</pre>
                     </section>
                     
                     <!-- Radio -->
@@ -174,8 +174,8 @@ cb.startup();</pre>
     }
 </script>
 
-<input type="radio" name="s" value="large" data-dojo-type="dijitive/Radio" data-dojo-props="onChange: radio1OnChange"/>
-<input type="radio" name="s" value="small" checked="checked" data-dojo-type="dijitive/Radio" data-dojo-props="onChange: radio2OnChange"/>
+<input type="radio" name="size" value="large" data-dojo-type="dijitive/Radio" data-dojo-props="onChange: radio1OnChange"/>
+<input type="radio" name="size" value="small" data-dojo-type="dijitive/Radio" data-dojo-props="onChange: radio2OnChange" checked="checked"/>
                         </div>
                         
                         <h3>Declarative</h3>
@@ -190,21 +190,21 @@ cb.startup();</pre>
     }
 &lt;/script&gt;
 
-&lt;input type=&quot;radio&quot; name=&quot;s&quot; value=&quot;large&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio1OnChange&quot;/&gt;
-&lt;input type=&quot;radio&quot; name=&quot;s&quot; value=&quot;small&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio2OnChange&quot;/&gt;</pre>
+&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;large&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio1OnChange&quot;/&gt;
+&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;small&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio2OnChange&quot; checked=&quot;checked&quot;/&gt;</pre>
                         
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums">var r = new Radio({
+                        <pre class="prettyprint linenums">var pro1 = new Radio({
     name: 'size',
     value: 'large',
     checked: true,
     onChange: function (e) {
         console.info('Value is: ' + this.get('value'));
     }
-}, 'radio');
+}, 'pro1');
 
-r.startup();</pre>
+pro1.startup();</pre>
                     </section>
                     
                     <!-- Select -->
@@ -215,7 +215,7 @@ r.startup();</pre>
                         </div>
                         
                         <div class="bs-docs-example">
-                            <select name="meal3" data-dojo-type="dijitive/Select" required="true">
+                            <select name="dec1" data-dojo-type="dijitive/Select" required="true">
     <option value="">Please select</option>
     <option value="steak-and-lobster">Steak &amp; Lobster</option>
     <option value="clam-chowder" selected="selected">Clam Chowder</option>
@@ -237,7 +237,7 @@ r.startup();</pre>
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums">&lt;select name=&quot;meal3&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+                        <pre class="prettyprint linenums">&lt;select name=&quot;dec1&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
     &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
     &lt;option value=&quot;steak-and-lobster&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
     &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
@@ -266,28 +266,28 @@ r.startup();</pre>
     { value: &quot;pasta&quot;, label: &quot;Pasta&quot; }
 ];
 
-var s = new Select({
-    name: 'meal1',
+var pro1 = new Select({
+    name: 'pro1',
     value: 'pasta',
     options: options,
     required: true,
     onChange: function (value) {
         console.info('select.onChange(): ' + value)
     }
-}, 's');
+}, 'pro1');
 
-s.watch('value', function (prop, oldVal, val) {
+pro1.watch('value', function (prop, oldVal, val) {
     console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
 });
 
-s.watch('message', function (prop, oldVal, val) {
+pro1.watch('message', function (prop, oldVal, val) {
     console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
 });
 
-s.startup();</pre>
+pro1.startup();</pre>
                         
                         <div class="bs-docs-example">
-                            <select name="meal4" multiple="true" data-dojo-type="dijitive/Select" required="true">
+                            <select name="dec1" multiple="true" data-dojo-type="dijitive/Select" required="true" size="3">
     <option value="">Please select</option>
     <option value="steak-and-lobster" selected="selected">Steak &amp; Lobster</option>
     <option value="clam-chowder" selected="selected">Clam Chowder</option>
@@ -309,7 +309,7 @@ s.startup();</pre>
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums">&lt;select name=&quot;meal4&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+                        <pre class="prettyprint linenums">&lt;select name=&quot;dec1&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot; size=&quot;3&quot;&gt;
     &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
     &lt;option value=&quot;steak-and-lobster&quot; selected=&quot;selected&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
     &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
@@ -338,26 +338,27 @@ s.startup();</pre>
     { value: &quot;pasta&quot;, label: &quot;Pasta&quot; }
 ];
 
-var s = new Select({
+var pro1 = new Select({
     multiple: true,
-    name: 'meal2',
+    name: 'pro1',
     value: ['steak-and-lobster', 'clam-chowder'],
     options: options,
     required: true,
+    size: 3,
     onChange: function (value) {
         console.info('select.onChange(): ' + value)
     }
-}, 's');
+}, 'pro1');
 
-s.watch('value', function (prop, oldVal, val) {
+pro1.watch('value', function (prop, oldVal, val) {
     console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
 });
 
-s.watch('message', function (prop, oldVal, val) {
+pro1.watch('message', function (prop, oldVal, val) {
     console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
 });
 
-s.startup();</pre>
+pro1.startup();</pre>
                     </section>
                     
                     <!-- Textarea -->
@@ -378,7 +379,7 @@ s.startup();</pre>
     }
 </script>
 
-<textarea name="note" data-dojo-type="dijitive/Textarea" data-dojo-props="onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, propercase: true"></textarea>
+<textarea name="dec1" data-dojo-type="dijitive/Textarea" data-dojo-props="onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, uppercase: true"></textarea>
                         </div>
                         
                         <h3>Declarative</h3>
@@ -393,23 +394,22 @@ s.startup();</pre>
     }
 &lt;/script&gt;
 
-&lt;textarea name=&quot;note&quot; data-dojo-type=&quot;dijitive/Textarea&quot; data-dojo-props=&quot;onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, propercase: true&quot;&gt;&lt;/textarea&gt;</pre>
+&lt;textarea name=&quot;dec1&quot; data-dojo-type=&quot;dijitive/Textarea&quot; data-dojo-props=&quot;onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, uppercase: true&quot;&gt;&lt;/textarea&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums">var ta = new Textarea({
-    name: 'note',
-    autocomplete: false,
+                        <pre class="prettyprint linenums">var pro1 = new Textarea({
+    name: 'pro1',
     uppercase: true,
     trim: true,
     onKeyPress: function (ev) {
         console.info('Key pressed')
     }
-}, 'ta');
+}, 'pro1');
 
-ta.startup();
+pro1.startup();
 
-ta.watch('value', function (name, oldVal, val) {
+pro1.watch('value', function (name, oldVal, val) {
     console.info('New value is &quot;' + val);
 });</pre>
                     </section>
@@ -432,7 +432,7 @@ ta.watch('value', function (name, oldVal, val) {
     }
 </script>
 
-<textarea name="note" data-dojo-type="dijitive/ExpandingTextarea" data-dojo-props="onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, uppercase: true, trim: true"></textarea>
+<textarea name="dec1" data-dojo-type="dijitive/ExpandingTextarea" data-dojo-props="onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, uppercase: true, trim: true"></textarea>
                         </div>
                         
                         <h3>Declarative</h3>
@@ -447,22 +447,22 @@ ta.watch('value', function (name, oldVal, val) {
     }
 &lt;/script&gt;
 
-&lt;textarea name=&quot;note&quot; data-dojo-type=&quot;dijitive/ExpandingTextarea&quot; data-dojo-props=&quot;onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, uppercase: true, trim: true&quot;&gt;&lt;/textarea&gt;</pre>
+&lt;textarea name=&quot;dec1&quot; data-dojo-type=&quot;dijitive/ExpandingTextarea&quot; data-dojo-props=&quot;onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, uppercase: true, trim: true&quot;&gt;&lt;/textarea&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums">var ta = new ExpandingTextarea({
-    name: 'note',
+                        <pre class="prettyprint linenums">var pro1 = new ExpandingTextarea({
+    name: 'pro1',
     uppercase: true,
     trim: true,
     onKeyPress: function (ev) {
         console.info('key pressed')
     }
-}, 'ta');
+}, 'pro1');
 
-ta.startup();
+pro1.startup();
 
-ta.watch('value', function (name, oldVal, val) {
+pro1.watch('value', function (name, oldVal, val) {
     console.info('New value is &quot;' + val);
 });</pre>
                     </section>
@@ -485,7 +485,7 @@ ta.watch('value', function (name, oldVal, val) {
     }
 </script>
 
-<input type="text" name="title" data-dojo-type="dijitive/Textbox" data-dojo-props="onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, uppercase: true, trim: true"/>
+<input type="text" name="dec1" data-dojo-type="dijitive/Textbox" data-dojo-props="onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, uppercase: true, trim: true"/>
                         </div>
                         
                         <h3>Declarative</h3>
@@ -500,24 +500,22 @@ ta.watch('value', function (name, oldVal, val) {
     }
 &lt;/script&gt;
 
-&lt;input type=&quot;text&quot; name=&quot;title&quot; data-dojo-type=&quot;dijitive/Textbox&quot; data-dojo-props=&quot;onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, uppercase: true, trim: true&quot;/&gt;</pre>
+&lt;input type=&quot;text&quot; name=&quot;dec1&quot; data-dojo-type=&quot;dijitive/Textbox&quot; data-dojo-props=&quot;onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, uppercase: true, trim: true&quot;/&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
-                        <pre class="prettyprint linenums">var tb = new Textbox({
-    name: 'title',
-    placeHolder: 'Your title',
-    autocomplete: false,
+                        <pre class="prettyprint linenums">var pro1 = new Textbox({
+    name: 'pro1',
     uppercase: true,
     trim: true,
     onKeyPress: function (ev) {
         console.info('Key pressed')
     }
-}, 'tb');
+}, 'pro1');
 
-tb.startup();
+pro1.startup();
 
-tb.watch('value', function (name, oldVal, val) {
+pro1.watch('value', function (name, oldVal, val) {
     console.info('New value is &quot;' + val);
 });</pre>
                     </section>
@@ -537,22 +535,24 @@ tb.watch('value', function (name, oldVal, val) {
         
 
 
-    <script src="assets-201210251156/other/google-code-prettify/prettify.js"></script>
-    <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201210251156/dojo/dojo.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/event.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/promise.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/browser.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/ajax.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/dom-common.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/dom-extra.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/widget-common.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/widget-extra.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/form-click.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/form-select.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/layer/form-text.js"></script>
-    <script type="text/javascript" src="assets-201210251156/frontend/index.js"></script>
+    <script src="assets-201211041538/other/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201211041538/dojo/dojo.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/event.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/promise.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/browser.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/ajax.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/dom-common.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/dom-extra.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/widget-common.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/widget-extra.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/form-click.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/form-select.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/layer/form-text.js"></script>
+    <script type="text/javascript" src="assets-201211041538/frontend/index.js"></script>
 
-        <script>
+        
+
+<script>
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-35397940-1']);
     _gaq.push(['_trackPageview']);
