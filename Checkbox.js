@@ -43,8 +43,9 @@ define([
         },
         
         _setCheckedAttr: function (value) {
-            this._set("checked", (value));
-            this._handleOnChange((value));
+            this.domNode.checked = !!value;
+            this._set("checked", !!value);
+            this._handleOnChange(!!value);
         },
 
         _getValueAttr: function(){
