@@ -39,29 +39,29 @@
                     parser.parse();
                     
                     ready(function () {
-                        doh.register("declarative", [
+                        doh.register("declarative usage", [
                             {
-                                name: "get(value) and get(checked), initially checked",
+                                name: "should be initially checked and yield the node's value",
                                 runTest: function () {
                                     var dec1 = registry.byId('dec1');
-                                    doh.t(dec1.get('checked'), "should be checked");
-                                    doh.is('on', dec1.get('value'), "should have value of 'on'");
-                                    doh.is('on', dec1.domNode.value, "HTML element original value should be 'on'");
-                                    //doh.t(domAttr.has(dec1.domNode, 'checked'), "domNode should have the 'checked' attribute");
+                                    doh.t(dec1.get('checked'), "checked is true");
+                                    doh.is('on', dec1.get('value'), "value is on");
+                                    doh.is('on', dec1.domNode.value, "dom node value is on");
+                                    //doh.t(domAttr.has(dec1.domNode, 'checked'), "dom node has the checked attribute");
                                 }
                             },
                             {
-                                name: "get(value) and get(checked), initially unchecked",
+                                name: "should be initially unchecked and have a value of false",
                                 runTest: function () {
                                     var dec2 = registry.byId('dec2');
-                                    doh.f(dec2.get('checked'), "should not be checked");
-                                    doh.f(dec2.get('value'), "should have value of false");
-                                    doh.is('on', dec2.domNode.value, "HTML element original value should be 'on'");
-                                    //doh.f(domAttr.has(dec2.domNode, 'checked'), "domNode should not have the 'checked' attribute");
+                                    doh.f(dec2.get('checked'), "checked is false");
+                                    doh.f(dec2.get('value'), "value is false");
+                                    doh.is('on', dec2.domNode.value, "dom node value is on");
+                                    //doh.f(domAttr.has(dec2.domNode, 'checked'), "dom node does not have the checked attribute");
                                 }
                             },
                             {
-                                name: "watch and check",
+                                name: "checking it should be watchable",
                                 timeout: 1000,
                                 handle: null,
                                 runTest: function () {
@@ -69,7 +69,7 @@
                                         d = new doh.Deferred();
 
                                     this.handle = dec2.watch('checked', function (prop, old, val) {
-                                        doh.t(val, "value should be true");
+                                        doh.t(val, "checked is true");
                                         d.callback(true);
                                     });
 
@@ -81,7 +81,7 @@
                                 }
                             },
                             {
-                                name: "watch and uncheck",
+                                name: "unchecking it should be watchable",
                                 timeout: 1000,
                                 handle: null,
                                 runTest: function () {
@@ -89,7 +89,7 @@
                                         d = new doh.Deferred();
 
                                     this.handle = dec2.watch('checked', function (prop, old, val) {
-                                        doh.f(val, "value should be false");
+                                        doh.f(val, "checked is false");
                                         d.callback(true);
                                     });
 
@@ -101,7 +101,7 @@
                                 }
                             },
                             {
-                                name: "onChange",
+                                name: "checking it should fire onChange",
                                 timeout: 1000,
                                 setUp: function () {
                                     this.dec2 = registry.byId('dec2');
@@ -110,7 +110,7 @@
                                     var d = new doh.Deferred();
 
                                     this.dec2.onChange = function (ev) {
-                                        doh.t(this.get('checked'), "value should be true");
+                                        doh.t(this.get('checked'), "checked is true");
                                         d.callback(true);
                                     };
 
@@ -123,9 +123,9 @@
                             }
                         ]);
                         
-                        doh.register("programmatic on existing node", [
+                        doh.register("programmatic usage on existing node", [
                             {
-                                name: "get(value) and get(checked), initially checked",
+                                name: "should be initially checked and yield the node's value",
                                 setUp: function () {
                                     this.pro1 = new Radio({
                                         id: 'pro1',
@@ -137,17 +137,17 @@
                                     this.pro1.startup();
                                 },
                                 runTest: function () {
-                                    doh.t(this.pro1.get('checked'), "should be checked");
-                                    doh.is('on', this.pro1.get('value'), "should have value of 'on'");
-                                    doh.is('on', this.pro1.domNode.value, "HTML element original value should be 'on'");
-                                    doh.t(domAttr.has(this.pro1.domNode, 'checked'), "domNode should have the 'checked' attribute");
+                                    doh.t(this.pro1.get('checked'), "is checked");
+                                    doh.is('on', this.pro1.get('value'), "value is on");
+                                    doh.is('on', this.pro1.domNode.value, "dom node value is on");
+                                    doh.t(domAttr.has(this.pro1.domNode, 'checked'), "dom node has the checked attribute");
                                 },
                                 tearDown: function () {
                                     this.pro1.destroyRecursive();
                                 }
                             },
                             {
-                                name: "get(value) and get(checked), initially unchecked",
+                                name: "should be initially unchecked and have a value of false",
                                 setUp: function () {
                                     this.pro1 = new Radio({
                                         id: 'pro1',
@@ -159,10 +159,10 @@
                                     this.pro1.startup();
                                 },
                                 runTest: function () {
-                                    doh.f(this.pro1.get('checked'), "should not be checked");
-                                    doh.f(this.pro1.get('value'), "should have value of false");
-                                    doh.is('on', this.pro1.domNode.value, "HTML element original value should be 'on'");
-                                    doh.f(domAttr.has(this.pro1.domNode, 'checked'), "domNode should not have the 'checked' attribute");
+                                    doh.f(this.pro1.get('checked'), "is checked");
+                                    doh.f(this.pro1.get('value'), "value is false");
+                                    doh.is('on', this.pro1.domNode.value, "dom node value is on");
+                                    doh.f(domAttr.has(this.pro1.domNode, 'checked'), "dom node doesn't have the checked attribute");
                                 },
                                 tearDown: function () {
                                     this.pro1.destroyRecursive();
@@ -170,9 +170,9 @@
                             }
                         ]);
                         
-                        doh.register("programmatic", [
+                        doh.register("programmatic usage", [
                             {
-                                name: "get(value) and get(checked), initially checked",
+                                name: "should be initially checked and yield the node's value",
                                 setUp: function () {
                                     this.pro2 = new Radio({
                                         id: 'pro2',
@@ -185,17 +185,17 @@
                                     this.pro2.startup();
                                 },
                                 runTest: function () {
-                                    doh.t(this.pro2.get('checked'), "should be checked");
-                                    doh.is('on', this.pro2.get('value'), "should have value of 'on'");
-                                    doh.is('on', this.pro2.domNode.value, "HTML element original value should be 'on'");
-                                    doh.t(domAttr.has(this.pro2.domNode, 'checked'), "domNode should have the 'checked' attribute");
+                                    doh.t(this.pro2.get('checked'), "is checked");
+                                    doh.is('on', this.pro2.get('value'), "value is on'");
+                                    doh.is('on', this.pro2.domNode.value, "dom node value is on");
+                                    doh.t(domAttr.has(this.pro2.domNode, 'checked'), "dom node has the checked attribute");
                                 },
                                 tearDown: function () {
                                     this.pro2.destroyRecursive();
                                 }
                             },
                             {
-                                name: "get(value) and get(checked), initially unchecked",
+                                name: "should be initially unchecked and have a value of false",
                                 setUp: function () {
                                     this.pro3 = new Radio({
                                         id: 'pro3',
@@ -208,10 +208,10 @@
                                     this.pro3.startup();
                                 },
                                 runTest: function () {
-                                    doh.f(this.pro3.get('checked'), "should not be checked");
-                                    doh.f(this.pro3.get('value'), "should have value of false");
-                                    doh.is('on', this.pro3.domNode.value, "HTML element original value should be 'on'");
-                                    doh.f(domAttr.has(this.pro3.domNode, 'checked'), "domNode should not have the 'checked' attribute");
+                                    doh.f(this.pro3.get('checked'), "is checked");
+                                    doh.f(this.pro3.get('value'), "value is false");
+                                    doh.is('on', this.pro3.domNode.value, "dom node value is on");
+                                    doh.f(domAttr.has(this.pro3.domNode, 'checked'), "dom node doesn't have the checked attribute");
                                 },
                                 tearDown: function () {
                                     this.pro3.destroyRecursive();

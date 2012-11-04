@@ -35,7 +35,7 @@
             </select>
             
             <p>Multiple</p>
-            <select id="dec2" name="dec2" data-dojo-type="dijitive/Select" multiple="true" required="true">
+            <select id="dec2" name="dec2" data-dojo-type="dijitive/Select" required="true" multiple="true" size="3">
                 <option value="">Please select</option>
                 <option value="a" selected="selected">A</option>
                 <option value="b" selected="selected">B</option>
@@ -79,7 +79,7 @@
                     { value: "d", label: "D" }
                 ];
                 
-                var sStore = new ObjectStore(new Memory({
+                var syncStore = new ObjectStore(new Memory({
                     data: [
                         { id: '', label: 'Please select' },
                         { id: "a", label: "A" },
@@ -89,7 +89,7 @@
                     ]
                 }));
 
-                var aStore = new ObjectStore(new JsonRest({
+                var asyncStore = new ObjectStore(new JsonRest({
                     target: 'test_Select.json'
                 }));
                 
@@ -119,9 +119,10 @@
                 var pro2 = new Select({
                     multiple: true,
                     name: 'pro2',
-                    value: ['a', 'd'],
+                    value: ['a', 'b'],
                     options: options,
                     required: true,
+                    size: '3',
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
@@ -141,13 +142,16 @@
                 var pro3 = new Select({
                     multiple: true,
                     name: 'pro3',
-                    value: 'a',
-                    store: sStore,
+                    //value: ['a', 'b'],
+                    //store: syncStore,
                     required: true,
+                    size: '3',
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
                 }, 'pro3');
+                
+                pro3.setStore(syncStore, ['a', 'b']);
 
                 pro3.watch('value', function (prop, oldVal, val) {
                     console.log('watch("value"):', val);
@@ -166,13 +170,15 @@
                 // simple backed by asynchronous store
                 var pro4 = new Select({
                     name: 'pro4',
-                    value: 'd',
-                    store: aStore,
+                    //value: ['a', 'b'],
+                    //store: asyncStore,
                     required: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
                 }, 'pro4');
+                
+                pro4.setStore(asyncStore, ['a', 'b']);
 
                 pro4.watch('value', function (prop, oldVal, val) {
                     console.log('watch("value"):', val);

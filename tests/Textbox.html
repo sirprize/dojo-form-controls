@@ -44,36 +44,36 @@
                     parser.parse();
                     
                     ready(function () {
-                        doh.register("declarative", [
+                        doh.register("declarative usage", [
                             {
-                                name: "set/get(value) with uppercase formatter",
+                                name: "value should be same as dom node value and it should be transformed to uppercase",
                                 runTest: function () {
                                     var dec1 = registry.byId('dec1');
-                                    doh.is('SOME TEXT', dec1.get('value'), "value should be 'SOME TEXT");
+                                    doh.is('SOME TEXT', dec1.get('value'), "value is SOME TEXT");
                                     dec1.set('value', 'AnD MoRe TeXt');
-                                    doh.is('AND MORE TEXT', dec1.domNode.value, "domNode value should be 'AND MORE TEXT");
-                                    doh.is('AND MORE TEXT', dec1.get('value'), "value should be 'AND MORE TEXT");
+                                    doh.is('AND MORE TEXT', dec1.domNode.value, "dom node value is AND MORE TEXT");
+                                    doh.is('AND MORE TEXT', dec1.get('value'), "value is AND MORE TEXT");
                                 }
                             },
                             {
-                                name: "set/get(value) with lowercase formatter",
+                                name: "value should be same as dom node value and it should be transformed to lowercase",
                                 runTest: function () {
                                     var dec2 = registry.byId('dec2');
-                                    doh.is('some text', dec2.get('value'), "value should be 'some text");
+                                    doh.is('some text', dec2.get('value'), "value is some text");
                                     dec2.set('value', 'AnD MoRe TeXt');
-                                    doh.is('and more text', dec2.domNode.value, "domNode value should be 'and more text");
-                                    doh.is('and more text', dec2.get('value'), "value should be 'and more text");
+                                    doh.is('and more text', dec2.domNode.value, "dom node value is and more text");
+                                    doh.is('and more text', dec2.get('value'), "value is and more text");
                                 }
                             },
                             {
-                                name: "watch(value)",
+                                name: "changing the value should be watchable",
                                 handle: null,
                                 runTest: function () {
                                     var d = new doh.Deferred(),
                                         dec2 = registry.byId('dec2');
 
                                     this.handle = dec2.watch('value', function (prop, old, val) {
-                                        doh.is('second', val, "value should be 'second");
+                                        doh.is('second', val, "value is second");
                                         d.callback(true);
                                     });
                                     
@@ -86,9 +86,9 @@
                             }
                         ]);
                         
-                        doh.register("programmatic", [
+                        doh.register("programmatic usage", [
                             {
-                                name: "set/get(value) with uppercase formatter",
+                                name: "value should be same as dom node value and it should be transformed to uppercase",
                                 setUp: function () {
                                     this.pro1 = new Textbox({
                                         id: 'pro1',
@@ -102,17 +102,17 @@
                                     this.pro1.startup();
                                 },
                                 runTest: function () {
-                                    doh.is('SOME TEXT', this.pro1.get('value'), "value should be 'SOME TEXT");
+                                    doh.is('SOME TEXT', this.pro1.get('value'), "value is SOME TEXT");
                                     this.pro1.set('value', 'AnD MoRe TeXt');
-                                    doh.is('AND MORE TEXT', this.pro1.domNode.value, "domNode value should be 'AND MORE TEXT");
-                                    doh.is('AND MORE TEXT', this.pro1.get('value'), "value should be 'AND MORE TEXT");
+                                    doh.is('AND MORE TEXT', this.pro1.domNode.value, "dom node value is AND MORE TEXT");
+                                    doh.is('AND MORE TEXT', this.pro1.get('value'), "value is AND MORE TEXT");
                                 },
                                 tearDown: function () {
                                     this.pro1.destroyRecursive();
                                 }
                             },
                             {
-                                name: "set/get(value) with lowercase formatter",
+                                name: "value should be same as dom node value and it should be transformed to lowercase",
                                 setUp: function () {
                                     this.pro2 = new Textbox({
                                         id: 'pro2',
@@ -126,17 +126,17 @@
                                     this.pro2.startup();
                                 },
                                 runTest: function () {
-                                    doh.is('some text', this.pro2.get('value'), "value should be 'some text");
+                                    doh.is('some text', this.pro2.get('value'), "value is some text");
                                     this.pro2.set('value', 'AnD MoRe TeXt');
-                                    doh.is('and more text', this.pro2.domNode.value, "domNode value should be 'and more text");
-                                    doh.is('and more text', this.pro2.get('value'), "value should be 'and more text");
+                                    doh.is('and more text', this.pro2.domNode.value, "dom node value is and more text");
+                                    doh.is('and more text', this.pro2.get('value'), "value is and more text");
                                 },
                                 tearDown: function () {
                                     this.pro2.destroyRecursive();
                                 }
                             },
                             {
-                                name: "watch(value)",
+                                name: "changing the value should be watchable",
                                 timeout: 1000,
                                 setUp: function () {
                                     this.pro3 = new Textbox({
@@ -152,7 +152,7 @@
                                     var d = new doh.Deferred();
 
                                     this.pro3.watch('value', function (prop, old, val) {
-                                        doh.is('second', val, "value should be 'second");
+                                        doh.is('second', val, "value is second");
                                         d.callback(true);
                                     });
                                     

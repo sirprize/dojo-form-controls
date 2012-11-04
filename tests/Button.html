@@ -45,20 +45,20 @@
                     parser.parse();
                     
                     ready(function () {
-                        doh.register("declarative", [
+                        doh.register("declarative usage", [
                             {
-                                name: "set/get(label)",
+                                name: "label should be same as innerHTML",
                                 runTest: function () {
                                     var dec1 = registry.byId('dec1');
-                                    doh.is('Click', dec1.get('label'), "label should be 'Click");
-                                    doh.is('Click', dec1.domNode.innerHTML, "domNode should have innerHTML set to 'Click'");
+                                    doh.is('Click', dec1.get('label'), "label is Click");
+                                    doh.is('Click', dec1.domNode.innerHTML, "dom node innerHTML is Click");
                                     dec1.set('label', 'Clack');
-                                    doh.is('Clack', dec1.get('label'), "label should be 'Clack");
-                                    doh.is('Clack', dec1.domNode.innerHTML, "domNode should have innerHTML set to 'Clack'");
+                                    doh.is('Clack', dec1.get('label'), "label is Clack");
+                                    doh.is('Clack', dec1.domNode.innerHTML, "dom node innerHTML is Clack");
                                 }
                             },
                             {
-                                name: "onClick",
+                                name: "click should fire onClick and submit the form",
                                 submitted: false,
                                 handle: null,
                                 setUp: function () {
@@ -70,15 +70,30 @@
                                     }));
                                 },
                                 runTest: function () {
-                                    this.submitted = false;
                                     this.dec1.set('onClick', function () { return true; });
                                     this.dec1.domNode.click();
-                                    doh.t(this.submitted, "click should submit parent form");
+                                    doh.t(this.submitted, "parent form submitted");
+                                },
+                                tearDown: function () {
+                                    this.handle.remove();
+                                }
+                            },
+                            {
+                                name: "click should fire onClick and not submit the form",
+                                submitted: false,
+                                handle: null,
+                                setUp: function () {
+                                    this.dec1 = registry.byId('dec1');
                                     
-                                    this.submitted = false;
+                                    this.handle = on(this.dec1.domNode.form, 'submit', lang.hitch(this, function (ev) {
+                                        ev.preventDefault();
+                                        this.submitted = true;
+                                    }));
+                                },
+                                runTest: function () {
                                     this.dec1.set('onClick', function () { return false; });
                                     this.dec1.domNode.click();
-                                    doh.f(this.submitted, "click should not submit parent form");
+                                    doh.f(this.submitted, "parent form not submitted");
                                 },
                                 tearDown: function () {
                                     this.handle.remove();
@@ -86,9 +101,9 @@
                             }
                         ]);
                         
-                        doh.register("programmatic", [
+                        doh.register("programmatic usage", [
                             {
-                                name: "set/get(label)",
+                                name: "label should be same as innerHTML",
                                 setUp: function () {
                                     this.pro1 = new Button({
                                         id: 'pro1',
@@ -100,18 +115,18 @@
                                     this.pro1.startup();
                                 },
                                 runTest: function () {
-                                    doh.is('Click', this.pro1.get('label'), "label should be 'Click");
-                                    doh.is('Click', this.pro1.domNode.innerHTML, "domNode should have innerHTML set to 'Click'");
+                                    doh.is('Click', this.pro1.get('label'), "label is Click");
+                                    doh.is('Click', this.pro1.domNode.innerHTML, "dom node innerHTML is Click");
                                     this.pro1.set('label', 'Clack');
-                                    doh.is('Clack', this.pro1.get('label'), "label should be 'Clack");
-                                    doh.is('Clack', this.pro1.domNode.innerHTML, "domNode should have innerHTML set to 'Clack'");
+                                    doh.is('Clack', this.pro1.get('label'), "label is Clack");
+                                    doh.is('Clack', this.pro1.domNode.innerHTML, "dom node innerHTML is Clack");
                                 },
                                 tearDown: function () {
                                     this.pro1.destroyRecursive();
                                 }
                             },
                             {
-                                name: "onClick",
+                                name: "click should fire onClick and submit the form",
                                 timeout: 1000,
                                 submitted: false,
                                 handle: null,
@@ -138,15 +153,47 @@
                                     this.pro1.startup();
                                 },
                                 runTest: function () {
-                                    this.submitted = false;
                                     this.pro1.set('onClick', function () { return true; });
                                     this.pro1.domNode.click();
-                                    doh.t(this.submitted, "click should submit parent form");
+                                    doh.t(this.submitted, "parent form submitted");
+                                },
+                                tearDown: function () {
+                                    this.pro1.destroyRecursive();
+                                    this.handle.remove();
+                                    domConstruct.destroy(this.form);
+                                }
+                            },
+                            {
+                                name: "click should fire onClick and not submit the form",
+                                timeout: 1000,
+                                submitted: false,
+                                handle: null,
+                                setUp: function () {
+                                    this.form = domConstruct.create(
+                                        'form',
+                                        { method: 'get', action: '/' },
+                                        baseWin.body(),
+                                        'first'
+                                    );
                                     
-                                    this.submitted = false;
+                                    this.handle = on(this.form, 'submit', lang.hitch(this, function (ev) {
+                                        ev.preventDefault();
+                                        this.submitted = true;
+                                    }));
+                                    
+                                    this.pro1 = new Button({
+                                        id: 'pro1',
+                                        type: 'submit',
+                                        label: 'Click'
+                                    });
+                                    
+                                    this.pro1.placeAt(this.form, 'first');
+                                    this.pro1.startup();
+                                },
+                                runTest: function () {
                                     this.pro1.set('onClick', function () { return false; });
                                     this.pro1.domNode.click();
-                                    doh.f(this.submitted, "click should not submit parent form");
+                                    doh.f(this.submitted, "parent form not submitted");
                                 },
                                 tearDown: function () {
                                     this.pro1.destroyRecursive();
