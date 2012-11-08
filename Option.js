@@ -1,7 +1,7 @@
 define([
     "dojo/_base/declare",
-    "dijit/_WidgetBase",
-    "dijit/_TemplatedMixin",
+    "mijit/_WidgetBase",
+    "mijit/_TemplatedMixin",
     "dojo/dom-attr"
 ], function (
     declare,
@@ -18,7 +18,6 @@ define([
         label: '',
         selected: false,
         disabled: false,
-        xxx: 'asdf',
         
         _setValueAttr: function (value) {
             domAttr.set(this.domNode, 'value', value);

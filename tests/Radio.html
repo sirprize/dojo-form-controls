@@ -15,13 +15,13 @@
             <h1>dijitive/Radio</h1>
             
             <input type="radio" id="dec1" name="aaa" value="on" data-dojo-type="dijitive/Radio" checked="true"/>
-            <input type="radio" id="dec2" name="aaa" value="on" data-dojo-type="dijitive/Radio" />
+            <input type="radio" id="dec2" name="aaa" value="on" data-dojo-type="dijitive/Radio"/>
             <input type="radio" id="pro1"/>
             
             <script>
                 require([
                     "doh",
-                    "dijit/registry",
+                    "mijit/registry",
                     "dijitive/Radio",
                     "dojo/_base/window",
                     "dojo/parser",
@@ -47,7 +47,7 @@
                                     doh.t(dec1.get('checked'), "checked is true");
                                     doh.is('on', dec1.get('value'), "value is on");
                                     doh.is('on', dec1.domNode.value, "dom node value is on");
-                                    //doh.t(domAttr.has(dec1.domNode, 'checked'), "dom node has the checked attribute");
+                                    doh.t(!!domAttr.has(dec1.domNode, 'checked'), "dom node has the checked attribute");
                                 }
                             },
                             {
@@ -57,7 +57,7 @@
                                     doh.f(dec2.get('checked'), "checked is false");
                                     doh.f(dec2.get('value'), "value is false");
                                     doh.is('on', dec2.domNode.value, "dom node value is on");
-                                    //doh.f(domAttr.has(dec2.domNode, 'checked'), "dom node does not have the checked attribute");
+                                    doh.f(!!domAttr.has(dec2.domNode, 'checked'), "dom node does not have the checked attribute");
                                 }
                             },
                             {

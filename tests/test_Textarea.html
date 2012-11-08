@@ -36,16 +36,17 @@
 
                 var pro1 = new Textarea({
                     name: 'pro1',
-                    uppercase: true,
-                    onKeyPress: function (ev) {
-                        console.log('key pressed')
+                    placeholder: 'Say hello',
+                    autocomplete: false,
+                    onChange: function (val) {
+                        console.log('(onChange) New value is ' + val);
                     }
                 }, 'pro1');
 
                 pro1.startup();
 
                 pro1.watch('value', function (name, oldVal, val) {
-                    console.log('New value is "' + val);
+                    console.log('(watch) New value is "' + val);
                 });
             });
         </script>

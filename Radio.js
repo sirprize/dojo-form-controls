@@ -1,14 +1,14 @@
 define([
     "dojo/_base/declare",
-    "./Checkbox",
-    "dijit/form/_RadioButtonMixin"
+    "./Checkbox"
 ], function (
     declare,
-    Checkbox,
-    _RadioButtonMixin
+    Checkbox
 ) {
-    return declare([Checkbox, _RadioButtonMixin], {
+    return declare([Checkbox], {
         // summary:
         //      Provide widget functionality for an HTML <input type="radio"> control
+        
+        type: "radio"
     });
 });

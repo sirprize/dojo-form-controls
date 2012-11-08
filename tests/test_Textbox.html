@@ -36,19 +36,18 @@
 
                 var pro1 = new Textbox({
                     name: 'pro1',
-                    placeHolder: 'Say hello',
+                    placeholder: 'Say hello',
                     autocomplete: false,
-                    uppercase: true,
-                    onKeyPress: function (ev) {
-                        console.log('key pressed')
+                    onChange: function (val) {
+                        console.log('(onChange) New value is ' + val);
                     }
                 }, 'pro1');
 
-                pro1.startup();
-
-                pro1.watch('value', function (name, oldVal, val) {
-                    console.log('New value is "' + val);
+                pro1.watch('value', function (name, old, val) {
+                    console.log('(watch) New value is ' + val);
                 });
+                
+                pro1.startup();
             });
         </script>
     </body>

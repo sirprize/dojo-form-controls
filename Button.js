@@ -1,33 +1,60 @@
 define([
     "dojo/_base/declare",
     "dojo/_base/lang",
-    "dijit/form/_FormWidget",
-    "dijit/form/_ButtonMixin"
+    "dojo/_base/event",
+    "dojo/dom-attr",
+    "dojo/on",
+    "./_FormWidget"
 ], function (
     declare,
     lang,
-    _FormWidget,
-    _ButtonMixin
+    event,
+    domAttr,
+    on,
+    _FormWidget
 ) {
-    return declare([_FormWidget, _ButtonMixin], {
+    return declare([_FormWidget], {
         // summary:
         //      Provide widget functionality for an HTML <button> control
         
-        templateString: '<button ${!nameAttrSetting} type="${type}" value="${value}" data-dojo-attach-point="focusNode,valueNode,labelNode" data-dojo-attach-event="onclick:_onClick"></button>',
+        // label: HTML String
+        //      Content to display in button.
+        label: "",
+
+        // type: [const] String
+        //      Type of button (submit, reset, button, checkbox, radio)
+        type: "button",
         
-        _fillContent: function(/*DomNode*/ source){
-            // summary:
-            //      This method is an exact copy of dijit/form/Button._fillContent
-            // Overrides _Templated._fillContent().
-            // If button label is specified as srcNodeRef.innerHTML rather than
-            // this.params.label, handle it here.
-            // TODO: remove the method in 2.0, parser will do it all for me
-            if(source && (!this.params || !("label" in this.params))){
-                var sourceLabel = lang.trim(source.innerHTML);
-                if(sourceLabel){
-                    this.label = sourceLabel; // _applyAttributes will be called after buildRendering completes to update the DOM
-                }
+        templateString: '<button ${!nameAttr} type="${type}" value="${value}"></button>',
+        
+        _fillContent: function(srcNodeRef){
+            if (srcNodeRef && domAttr.has(srcNodeRef, 'data-dojo-type')) {
+                this.set('label', lang.trim(srcNodeRef.innerHTML));
             }
+        },
+        
+        postCreate: function(){
+            this.inherited(arguments);
+            
+            this.own(on(this.domNode, 'click', lang.hitch(this, function (ev) {
+                if(this.disabled){
+                    event.stop(ev);
+                    return false;
+                }
+
+                if(this.onClick(ev) === false) {
+                    ev.preventDefault();
+                }
+            })));
+        },
+
+        onClick: function(ev){
+            return true;
+        },
+
+        _setLabelAttr: function(label){
+            this.domNode.innerHTML = label;
+            this._set("label", label);
         }
     });
 });

@@ -3,6 +3,7 @@ var dojoConfig = {
     cacheBust: 1,
     parseOnLoad: true,
     packages: [
+        { name: "mijit", location: "../../sirprize/mijit" },
         { name: "dijitive", location: "../../.." }
     ]
 };

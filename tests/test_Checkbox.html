@@ -43,8 +43,8 @@
                     name: 'pro1',
                     value: 'on',
                     checked: true,
-                    onChange: function (e) {
-                        console.log('value is: ' + this.get('value'));
+                    onChange: function (value) {
+                        console.log('value is: ' + value);
                     }
                 }, 'pro1');
 
@@ -55,8 +55,8 @@
                     disabled: true,
                     value: 'on',
                     checked: false,
-                    onChange: function (e) {
-                        console.log('value is: ' + this.get('value'));
+                    onChange: function (value) {
+                        console.log('value is: ' + value);
                     }
                 }, 'pro2');
 

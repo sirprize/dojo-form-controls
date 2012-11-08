@@ -33,10 +33,7 @@
             <script>
                 require([
                     "doh",
-                    "dijit/registry",
-                    "dojo/store/Memory",
-                    "dojo/store/JsonRest",
-                    "dojo/data/ObjectStore",
+                    "mijit/registry",
                     "dijitive/Select",
                     "dojo/_base/lang",
                     "dojo/_base/window",
@@ -48,9 +45,6 @@
                 ], function (
                     doh,
                     registry,
-                    Memory,
-                    JsonRest,
-                    ObjectStore,
                     Select,
                     lang,
                     baseWin,
@@ -149,70 +143,6 @@
                                 tearDown: function () {
                                     this.pro1.destroyRecursive();
                                 }
-                            },
-                            {
-                                name: "should load from synchronous store and set the value upon instantiation",
-                                setUp: function () {
-                                    var store = new ObjectStore(new Memory({
-                                        data: [
-                                            { id: '', label: 'Please select' },
-                                            { id: "a", label: "A" },
-                                            { id: "b", label: "B" },
-                                            { id: "c", label: "C" },
-                                            { id: "d", label: "D" }
-                                        ]
-                                    }));
-                                    
-                                    this.pro2 = new Select({
-                                        name: 'pro2',
-                                        value: 'd',
-                                        store: store,
-                                        required: true
-                                    });
-
-                                    this.pro2.placeAt(baseWin.body(), 'first');
-                                    this.pro2.startup();
-                                },
-                                runTest: function () {
-                                    doh.is('d', this.pro2.get('value'), "value is d");
-                                },
-                                tearDown: function () {
-                                    this.pro2.destroyRecursive();
-                                }
-                            },
-                            {
-                                name: "should load from asynchronous store and set the value upon instantiation",
-                                timeout: 2000,
-                                setUp: function () {
-                                    var store = new ObjectStore(new JsonRest({
-                                        target: 'test_Select.json'
-                                    }));
-                                    
-                                    this.pro3 = new Select({
-                                        name: 'pro3',
-                                        value: 'd',
-                                        store: store,
-                                        required: true
-                                    });
-
-                                    this.pro3.placeAt(baseWin.body(), 'first');
-                                    this.pro3.startup();
-                                },
-                                runTest: function () {
-                                    var d = new doh.Deferred();
-                                    
-                                    this.pro3.onLoadDeferred.then(
-                                        lang.hitch(this, function () {
-                                            doh.is('d', this.pro3.get('value'), "value is d");
-                                            d.callback(true);
-                                        })
-                                    );
-                                    
-                                    return d;
-                                },
-                                tearDown: function () {
-                                    this.pro3.destroyRecursive();
-                                }
                             }
                         ]);
                         
@@ -244,74 +174,6 @@
                                 },
                                 tearDown: function () {
                                     this.pro10.destroyRecursive();
-                                }
-                            },
-                            {
-                                name: "should load from synchronous store and set the values upon instantiation",
-                                setUp: function () {
-                                    var store = new ObjectStore(new Memory({
-                                        data: [
-                                            { id: '', label: 'Please select' },
-                                            { id: "a", label: "A" },
-                                            { id: "b", label: "B" },
-                                            { id: "c", label: "C" },
-                                            { id: "d", label: "D" }
-                                        ]
-                                    }));
-                                    
-                                    this.pro11 = new Select({
-                                        name: 'pro11',
-                                        multiple: true,
-                                        //value: ['a', 'b'], // todo: this doesn't work - fix in dijit/_FormSelectWidget::setStore()
-                                        //store: store,
-                                        required: true
-                                    });
-                                    
-                                    this.pro11.setStore(store, ['a', 'b']); // set store and value here then...
-                                    this.pro11.placeAt(baseWin.body(), 'first');
-                                    this.pro11.startup();
-                                },
-                                runTest: function () {
-                                    doh.is(['a', 'b'], this.pro11.get('value'), "value is [a, d]");
-                                },
-                                tearDown: function () {
-                                    this.pro11.destroyRecursive();
-                                }
-                            },
-                            {
-                                name: "should load from asynchronous store and set the values upon instantiation",
-                                timeout: 2000,
-                                setUp: function () {
-                                    var store = new ObjectStore(new JsonRest({
-                                        target: 'test_Select.json'
-                                    }));
-                                    
-                                    this.pro12 = new Select({
-                                        name: 'pro12',
-                                        //value: ['a', 'b'], // todo: this doesn't work - fix in dijit/_FormSelectWidget::setStore()
-                                        //store: store,
-                                        multiple: true,
-                                        required: true
-                                    });
-                                    
-                                    this.pro12.setStore(store, ['a', 'b']); // set store and value here then...
-                                    this.pro12.placeAt(baseWin.body(), 'first');
-                                    this.pro12.startup();
-                                },
-                                runTest: function () {
-                                    var d = new doh.Deferred();
-                                    
-                                    this.pro12.onLoadDeferred.then(
-                                        lang.hitch(this, function () {
-                                            doh.is(['a', 'b'], this.pro12.get('value'), "value is [a, d]");
-                                            d.callback(true);
-                                        })
-                                    );
-                                    
-                                    return d;
-                                },
-                                tearDown: function () {
-                                    this.pro12.destroyRecursive();
                                 }
                             }
                         ]);

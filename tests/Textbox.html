@@ -14,13 +14,13 @@
             
             <h1>dijitive/Textbox</h1>
             
-            <input type="text" id="dec1" name="dec1" value="   SoMe TeXt   " data-dojo-type="dijitive/Textbox" data-dojo-props="uppercase: true, trim: true"/>
-            <input type="text" id="dec2" name="dec2" value="   SoMe TeXt   " data-dojo-type="dijitive/Textbox" data-dojo-props="lowercase: true, trim: true"/>
+            <input type="text" id="dec1" name="dec1" value="Some text" data-dojo-type="dijitive/Textbox"/>
+            <input type="text" id="dec2" name="dec2" value="Some text" data-dojo-type="dijitive/Textbox"/>
             
             <script>
                 require([
                     "doh",
-                    "dijit/registry",
+                    "mijit/registry",
                     "dijitive/Textbox",
                     "dojo/_base/lang",
                     "dojo/_base/window",
@@ -46,23 +46,13 @@
                     ready(function () {
                         doh.register("declarative usage", [
                             {
-                                name: "value should be same as dom node value and it should be transformed to uppercase",
+                                name: "value should be same as dom node value",
                                 runTest: function () {
                                     var dec1 = registry.byId('dec1');
-                                    doh.is('SOME TEXT', dec1.get('value'), "value is SOME TEXT");
-                                    dec1.set('value', 'AnD MoRe TeXt');
-                                    doh.is('AND MORE TEXT', dec1.domNode.value, "dom node value is AND MORE TEXT");
-                                    doh.is('AND MORE TEXT', dec1.get('value'), "value is AND MORE TEXT");
-                                }
-                            },
-                            {
-                                name: "value should be same as dom node value and it should be transformed to lowercase",
-                                runTest: function () {
-                                    var dec2 = registry.byId('dec2');
-                                    doh.is('some text', dec2.get('value'), "value is some text");
-                                    dec2.set('value', 'AnD MoRe TeXt');
-                                    doh.is('and more text', dec2.domNode.value, "dom node value is and more text");
-                                    doh.is('and more text', dec2.get('value'), "value is and more text");
+                                    doh.is('Some text', dec1.get('value'), "value is Some text");
+                                    dec1.set('value', 'And more text');
+                                    doh.is('And more text', dec1.domNode.value, "dom node value is And more text");
+                                    doh.is('And more text', dec1.get('value'), "value is And more text");
                                 }
                             },
                             {
@@ -88,51 +78,25 @@
                         
                         doh.register("programmatic usage", [
                             {
-                                name: "value should be same as dom node value and it should be transformed to uppercase",
+                                name: "value should be same as dom node value",
                                 setUp: function () {
                                     this.pro1 = new Textbox({
                                         id: 'pro1',
                                         name: 'pro1',
-                                        trim: true,
-                                        uppercase: true,
-                                        value: '   SoMe TeXt   '
+                                        value: 'Some text'
                                     });
                                     
                                     this.pro1.placeAt(baseWin.body(), 'first');
                                     this.pro1.startup();
                                 },
                                 runTest: function () {
-                                    doh.is('SOME TEXT', this.pro1.get('value'), "value is SOME TEXT");
-                                    this.pro1.set('value', 'AnD MoRe TeXt');
-                                    doh.is('AND MORE TEXT', this.pro1.domNode.value, "dom node value is AND MORE TEXT");
-                                    doh.is('AND MORE TEXT', this.pro1.get('value'), "value is AND MORE TEXT");
+                                    doh.is('Some text', this.pro1.get('value'), "value is Some text");
+                                    this.pro1.set('value', 'And more text');
+                                    doh.is('And more text', this.pro1.domNode.value, "dom node value is And more text");
+                                    doh.is('And more text', this.pro1.get('value'), "value is And more text");
                                 },
                                 tearDown: function () {
                                     this.pro1.destroyRecursive();
-                                }
-                            },
-                            {
-                                name: "value should be same as dom node value and it should be transformed to lowercase",
-                                setUp: function () {
-                                    this.pro2 = new Textbox({
-                                        id: 'pro2',
-                                        name: 'pro2',
-                                        trim: true,
-                                        lowercase: true,
-                                        value: '   SoMe TeXt   '
-                                    });
-                                    
-                                    this.pro2.placeAt(baseWin.body(), 'first');
-                                    this.pro2.startup();
-                                },
-                                runTest: function () {
-                                    doh.is('some text', this.pro2.get('value'), "value is some text");
-                                    this.pro2.set('value', 'AnD MoRe TeXt');
-                                    doh.is('and more text', this.pro2.domNode.value, "dom node value is and more text");
-                                    doh.is('and more text', this.pro2.get('value'), "value is and more text");
-                                },
-                                tearDown: function () {
-                                    this.pro2.destroyRecursive();
                                 }
                             },
                             {

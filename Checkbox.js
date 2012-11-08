@@ -3,21 +3,22 @@ define([
     "dojo/_base/lang",
     "dojo/dom-attr",
     "dojo/on",
-    "dijit/form/_FormWidget",
-    "dijit/form/_CheckBoxMixin"
+    "./_FormWidget"
 ], function (
     declare,
     lang,
     domAttr,
     on,
-    _FormWidget,
-    _CheckBoxMixin
+    _FormWidget
 ) {
-    return declare([_FormWidget, _CheckBoxMixin], {
+    return declare([_FormWidget], {
         // summary:
         //      Provide widget functionality for an HTML <input type="checkbox"> control
         
-        templateString: '<input ${!nameAttrSetting} type="${type}" ${checkedAttrSetting} data-dojo-attach-point="containerNode,focusNode" />',
+        type: "checkbox",
+        value: "on",
+        checked: false,
+        templateString: '<input ${!nameAttr} type="${type}" value="${value}" ${checkedAttr}/>',
         
         postMixInProperties: function() {
             this.inherited(arguments);
@@ -25,14 +26,14 @@ define([
             // Need to set initial checked state as part of template, so that form submit works.
             // domAttr.set(node, "checked", bool) doesn't work on IE until node has been attached
             // to <body>, see #8666
-            this.checkedAttrSetting = this.checked ? "checked" : "";
+            this.checkedAttr = this.checked ? "checked" : "";
         },
         
         _fillContent: function() {
             // summary:
             //      Get checked attribute on IE when instantiating declaratively
             if (this.srcNodeRef && domAttr.has(this.srcNodeRef, 'data-dojo-type')) {
-                this.set('checked', this.srcNodeRef.checked);
+                this.set('checked', !!domAttr.has(this.srcNodeRef, 'checked'));
             }
         },
         
@@ -45,13 +46,31 @@ define([
         _setCheckedAttr: function (value) {
             this.domNode.checked = !!value;
             this._set("checked", !!value);
-            this._handleOnChange(!!value);
+            this._handleOnChange(this.get('value'));
         },
+        
+        _setValueAttr: function(value){
+            // summary:
+            //      During initialization:
+            //      sets the value attribute
+            //
+            //      After initialization:
+            //      `widget.set('value', string)` will check the checkbox and change the value
+            //      `widget.set('value', boolean)` will change the checked state.
+            
+            this.domNode.value = !value && value !== 0 ? "on" : value;
 
+            if(typeof value == "string"){
+                value = true;
+            }
+            
+            if(this._created){
+                this.set('checked', value);
+            }
+        },
+        
         _getValueAttr: function(){
             // summary:
-            //      Hook so get('value') works.
-            // description:
             //      If the Checkbox is checked, returns the value attribute.
             //      Otherwise returns false.
             return this.checked ? this.value : false;

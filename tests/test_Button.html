@@ -29,11 +29,11 @@
             <h3>Declarative</h3>
             <script>
                 var buttonOnClick = function (ev) {
-                    console.info('Clicked');
+                    console.log('Clicked');
                 }
             </script>
 
-            <button class="btn btn-success" data-dojo-type="dijitive/Button" data-dojo-props="onClick: buttonOnClick">
+            <button class="btn btn-success" data-dojo-type="dijitive/Button" type="button" name="dec1" value="valuable" data-dojo-props="onClick: buttonOnClick">
                 <i class="icon-music icon-white"></i> Click Click
             </button>
             
@@ -54,7 +54,9 @@
                 "use strict";
 
                 var pro1 = new Button({
+                    name: 'pro1',
                     type: 'submit',
+                    value: 'valuable',
                     'class': 'btn btn-primary',
                     label: 'Click',
                     onClick: function (e) {

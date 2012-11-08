@@ -21,7 +21,7 @@
             <script>
                 require([
                     "doh",
-                    "dijit/registry",
+                    "mijit/registry",
                     "dijitive/Checkbox",
                     "dojo/_base/window",
                     "dojo/parser",
@@ -47,7 +47,7 @@
                                     doh.t(dec1.get('checked'), "checked is true");
                                     doh.is('on', dec1.get('value'), "value is on");
                                     doh.is('on', dec1.domNode.value, "dom node value is on");
-                                    //doh.t(domAttr.has(dec1.domNode, 'checked'), "dom node has the checked attribute");
+                                    doh.t(!!domAttr.has(dec1.domNode, 'checked'), "dom node has the checked attribute");
                                 }
                             },
                             {
@@ -57,7 +57,7 @@
                                     doh.f(dec2.get('checked'), "checked is false");
                                     doh.f(dec2.get('value'), "value is false");
                                     doh.is('on', dec2.domNode.value, "dom node value is on");
-                                    //doh.f(domAttr.has(dec2.domNode, 'checked'), "dom node does not have the checked attribute");
+                                    doh.f(!!domAttr.has(dec2.domNode, 'checked'), "dom node does not have the checked attribute");
                                 }
                             },
                             {
@@ -109,7 +109,7 @@
                                 runTest: function () {
                                     var d = new doh.Deferred();
 
-                                    this.dec2.onChange = function (ev) {
+                                    this.dec2.onChange = function (value) {
                                         doh.t(this.get('checked'), "checked is true");
                                         d.callback(true);
                                     };
@@ -118,7 +118,44 @@
                                     return d;
                                 },
                                 tearDown: function () {
-                                    this.dec2.onChange = function (ev) {};
+                                    this.dec2.onChange = function (value) {};
+                                }
+                            },
+                            {
+                                name: "setting a false value should uncheck it",
+                                runTest: function () {
+                                    var dec2 = registry.byId('dec2');
+                                    dec2.set('value', false);
+                                    doh.f(dec2.get('checked'), "checked is false");
+                                    doh.is('on', dec2.domNode.value, 'dom node value is on');
+                                }
+                            },
+                            {
+                                name: "setting a string value should check it",
+                                runTest: function () {
+                                    var dec2 = registry.byId('dec2');
+                                    dec2.set('value', 'on');
+                                    doh.t(dec2.get('checked'), "checked is true");
+                                }
+                            },
+                            {
+                                name: "setting a false value should be watchable",
+                                timeout: 1000,
+                                handle: null,
+                                runTest: function () {
+                                    var dec2 = registry.byId('dec2'),
+                                        d = new doh.Deferred();
+
+                                    this.handle = dec2.watch('checked', function (prop, old, val) {
+                                        doh.f(val, "checked is false");
+                                        d.callback(true);
+                                    });
+
+                                    dec2.set('value', false);
+                                    return d;
+                                },
+                                tearDown: function () {
+                                    this.handle.remove();
                                 }
                             }
                         ]);

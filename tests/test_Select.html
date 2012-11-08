@@ -17,12 +17,8 @@
             <select id="pro1"></select>
             <p>Multiple</p>
             <select id="pro2"></select>
-            <p>Backed by synchronous store</p>
-            <select id="pro3"></select>
-            <p>Backed by asynchronous store</p>
-            <select id="pro4"></select>
             <p>Disabled</p>
-            <select id="pro5"></select>
+            <select id="pro3"></select>
             
             <h3>Declarative</h3>
             <p>Single</p>
@@ -32,10 +28,11 @@
                 <option value="b" selected="selected">B</option>
                 <option value="c" disabled="true">C</option>
                 <option value="d">D</option>
+                <option value="e" selected="selected">E</option>
             </select>
             
             <p>Multiple</p>
-            <select id="dec2" name="dec2" data-dojo-type="dijitive/Select" required="true" multiple="true" size="3">
+            <select id="dec2" name="dec2" data-dojo-type="dijitive/Select" required="true" multiple="trueasdf" size="3">
                 <option value="">Please select</option>
                 <option value="a" selected="selected">A</option>
                 <option value="b" selected="selected">B</option>
@@ -49,29 +46,21 @@
         <script>
             require([
                 "dijitive/Select",
-                "dojo/store/Memory",
-                "dojo/store/JsonRest",
-                "dojo/data/ObjectStore",
-                "dijit/registry",
+                "mijit/registry",
                 "dojo/parser",
-                "dojo/query",
                 "dojo/on",
                 "dojo/domReady!"
             ], function (
                 Select,
-                Memory,
-                JsonRest,
-                ObjectStore,
                 registry,
                 parser,
-                query,
                 on
             ) {
                 "use strict";
 
                 parser.parse();
-
-                var options = [
+                
+                var options1 = [
                     { value: '', label: 'Please select' },
                     { value: "a", label: "A" },
                     { value: "b", label: "B" },
@@ -79,48 +68,39 @@
                     { value: "d", label: "D" }
                 ];
                 
-                var syncStore = new ObjectStore(new Memory({
-                    data: [
-                        { id: '', label: 'Please select' },
-                        { id: "a", label: "A" },
-                        { id: "b", label: "B" },
-                        { id: "c", label: "C" },
-                        { id: "d", label: "D" }
-                    ]
-                }));
-
-                var asyncStore = new ObjectStore(new JsonRest({
-                    target: 'test_Select.json'
-                }));
+                var options2 = [
+                    { value: '', label: 'Please select' },
+                    { value: "x", label: "X" },
+                    { value: "y", label: "Y" },
+                    { value: "z", label: "Z" }
+                ];
                 
                 // simple
                 var pro1 = new Select({
-                    baseClass: 'a-simple-select',
                     name: 'pro1',
                     value: 'b',
-                    options: options,
+                    options: options1,
                     required: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
                 }, 'pro1');
 
-                pro1.watch('value', function (prop, oldVal, val) {
-                    console.log('watch("value")', prop, oldVal, val);
-                });
-
-                pro1.watch('message', function (prop, oldVal, val) {
-                    console.log('watch("message"):', val);
+                pro1.watch('value', function (prop, old, val) {
+                    console.log('watch("value")', prop, old, val);
                 });
 
                 pro1.startup();
-
+                pro1.set('value', 'd');
+                pro1.set('options', options2);
+                pro1.set('value', 'z');
+                
                 // multiple
                 var pro2 = new Select({
                     multiple: true,
                     name: 'pro2',
                     value: ['a', 'b'],
-                    options: options,
+                    options: options1,
                     required: true,
                     size: '3',
                     onChange: function (value) {
@@ -128,113 +108,47 @@
                     }
                 }, 'pro2');
 
-                pro2.watch('value', function (prop, oldVal, val) {
-                    console.log('watch("value"):', val);
-                });
-
-                pro2.watch('message', function (prop, oldVal, val) {
-                    console.log('watch("message"):', val);
+                pro2.watch('value', function (prop, old, val) {
+                    console.log('watch("value")', prop, old, val);
                 });
 
                 pro2.startup();
-
-                // multiple backed by synchronous store
-                var pro3 = new Select({
-                    multiple: true,
-                    name: 'pro3',
-                    //value: ['a', 'b'],
-                    //store: syncStore,
-                    required: true,
-                    size: '3',
-                    onChange: function (value) {
-                        console.log('onChange(): ' + value)
-                    }
-                }, 'pro3');
+                pro2.set('value', ['b', 'd']);
+                pro2.set('value', ['a', 'd']);
                 
-                pro3.setStore(syncStore, ['a', 'b']);
-
-                pro3.watch('value', function (prop, oldVal, val) {
-                    console.log('watch("value"):', val);
-                });
-
-                pro3.watch('message', function (prop, oldVal, val) {
-                    console.log('watch("message"):', val);
-                });
-
-                pro3.startup();
-
-                setTimeout(function () {
-                    //pro3.set('value', ['b','d']);
-                }, 1000)
-
-                // simple backed by asynchronous store
-                var pro4 = new Select({
-                    name: 'pro4',
-                    //value: ['a', 'b'],
-                    //store: asyncStore,
-                    required: true,
-                    onChange: function (value) {
-                        console.log('onChange(): ' + value)
-                    }
-                }, 'pro4');
-                
-                pro4.setStore(asyncStore, ['a', 'b']);
-
-                pro4.watch('value', function (prop, oldVal, val) {
-                    console.log('watch("value"):', val);
-                });
-
-                pro4.watch('message', function (prop, oldVal, val) {
-                    console.log('watch("message"):', val);
-                });
-
-                pro4.startup();
-
                 // disabled
-                var pro5 = new Select({
-                    name: 'pro5',
+                var pro3 = new Select({
+                    name: 'pro3',
                     value: 'a',
-                    options: options,
+                    options: options1,
                     disabled: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
                     }
-                }, 'pro5');
+                }, 'pro3');
 
-                pro5.watch('value', function (prop, oldVal, val) {
-                    console.log('watch("value"):', val);
+                pro3.watch('value', function (prop, old, val) {
+                    console.log('watch("value")', prop, old, val);
                 });
 
-                pro5.watch('message', function (prop, oldVal, val) {
-                    console.log('watch("message"):', val);
-                });
-
-                pro5.startup();
-
+                pro3.startup();
+                
                 // declarative single
                 registry.byId('dec1').onChange = function (value) {
                     console.log('onChange(): ' + value)
                 };
 
-                registry.byId('dec1').watch('value', function (prop, oldVal, val) {
-                    console.log('watch("value"):', val);
+                registry.byId('dec1').watch('value', function (prop, old, val) {
+                    console.log('watch("value")', prop, old, val);
                 });
-
-                registry.byId('dec1').watch('message', function (prop, oldVal, val) {
-                    console.log('watch("message"):', val);
-                });
-
+                
                 // declarative multiple
                 registry.byId('dec2').onChange = function (value) {
                     console.log('onChange(): ' + value)
                 };
 
-                registry.byId('dec2').watch('value', function (prop, oldVal, val) {
-                    console.log('watch("value"):', val);
-                });
-
-                registry.byId('dec2').watch('message', function (prop, oldVal, val) {
-                    console.log('watch("message"):', val);
+                registry.byId('dec2').watch('value', function (prop, old, val) {
+                    console.log('watch("value")', prop, old, val);
                 });
             });
         </script>
