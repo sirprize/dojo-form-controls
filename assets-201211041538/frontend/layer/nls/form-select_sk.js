@@ -1,2 +1,0 @@
-//>>built
-define("frontend/layer/nls/form-select_sk",{"dijit/form/nls/validate":{invalidMessage:"Zadan\u00e1 hodnota nie je platn\u00e1.",missingMessage:"T\u00e1to hodnota je povinn\u00e1.",rangeMessage:"T\u00e1to hodnota je mimo rozsah."}});

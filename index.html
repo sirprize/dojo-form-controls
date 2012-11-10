@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,17 +9,17 @@
         
 
 
-    <link rel="stylesheet" href="assets-201211041538/frontend-styles/bootstrap-common.css">
-    <link rel="stylesheet" href="assets-201211041538/frontend-styles/bootstrap-responsive.css">
-    <link rel="stylesheet" href="assets-201211041538/frontend-styles/bootstrap-docs.css">
-    <link rel="stylesheet" href="assets-201211041538/other/google-code-prettify/prettify.css">
+    <link rel="stylesheet" href="assets-201211101623/frontend-styles/bootstrap-common.css">
+    <link rel="stylesheet" href="assets-201211101623/frontend-styles/bootstrap-responsive.css">
+    <link rel="stylesheet" href="assets-201211101623/frontend-styles/bootstrap-docs.css">
+    <link rel="stylesheet" href="assets-201211101623/other/google-code-prettify/prettify.css">
 
         <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
     </head>
 
-    <body>
+    <body data-dojo-type="dobolo/ScrollSpy" data-dojo-props="targetSelector: '.bs-docs-sidenav', offsetsSelector: 'section.spy', offsetTop: 70, wait: 100">
         <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
@@ -35,7 +27,7 @@
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <li class="">
-                        <a href="http://github.com/sirprize/dijitive">Dijitive on Github</a>
+                        <a href="http://github.com/sirprize/dojo-form-controls">Dijitive on Github</a>
                     </li>
                 </ul>
             </div>
@@ -46,8 +38,8 @@
         <!-- Subhead -->
         <header class="jumbotron subhead" id="overview">
             <div class="container">
-                <h1>Dijitive</h1>
-                <p class="lead">Dojo Dijits For Native Form Controls.</p>
+                <h1>dojo-form-controls</h1>
+                <p class="lead">Dojo widgets for native form controls.</p>
             </div>
         </header>
 
@@ -56,13 +48,18 @@
             <!-- Docs nav -->
             <div class="row">
                 <div class="span3 bs-docs-sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav">
+                    <script>
+                        var offsetTop = function () {
+                            return document.width <= 980 ? 245 : 195;
+                        }
+                    </script>
+                    
+                    <ul class="nav nav-list bs-docs-sidenav" data-dojo-type="dobolo/Affix" data-dojo-props="offsetTop: offsetTop">
                         <li><a href="#button"><i class="icon-chevron-right"></i> Button</a></li>
                         <li><a href="#checkbox"><i class="icon-chevron-right"></i> Checkbox</a></li>
                         <li><a href="#radio"><i class="icon-chevron-right"></i> Radio</a></li>
                         <li><a href="#select"><i class="icon-chevron-right"></i> Select</a></li>
                         <li><a href="#textarea"><i class="icon-chevron-right"></i> Textarea</a></li>
-                        <li><a href="#expanding-textarea"><i class="icon-chevron-right"></i> Expanding Textarea</a></li>
                         <li><a href="#textbox"><i class="icon-chevron-right"></i> Textbox</a></li>
                     </ul>
                 </div>
@@ -73,7 +70,7 @@
                     <section id="button" class="spy">
                         <div class="page-header">
                             <h1>Button</h1>
-                            <p>Representation of a native <code>&lt;button&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Button.html">dijit/form/Button</a>.
+                            <p>Representation of a native <code>&lt;button&gt;</code> element.</p>
                         </div>
                         
                         <div class="bs-docs-example">
@@ -83,7 +80,7 @@
     }
 </script>
 
-<button class="btn btn-success" data-dojo-type="dijitive/Button" data-dojo-props="onClick: buttonOnClick">
+<button class="btn btn-success" data-dojo-type="dojo-form-controls/Button" data-dojo-props="onClick: buttonOnClick">
     <i class="icon-music icon-white"></i> Click Click
 </button>
                         </div>
@@ -96,7 +93,7 @@
     }
 &lt;/script&gt;
 
-&lt;button class=&quot;btn btn-success&quot; data-dojo-type=&quot;dijitive/Button&quot; data-dojo-props=&quot;onClick: buttonOnClick&quot;&gt;
+&lt;button class=&quot;btn btn-success&quot; data-dojo-type=&quot;dojo-form-controls/Button&quot; data-dojo-props=&quot;onClick: buttonOnClick&quot;&gt;
     &lt;i class=&quot;icon-music icon-white&quot;&gt;&lt;/i&gt; Click Click
 &lt;/button&gt;</pre>
                         
@@ -119,7 +116,7 @@ pro1.startup();</pre>
                     <section id="checkbox" class="spy">
                         <div class="page-header">
                             <h1>Checkbox</h1>
-                            <p>Representation of a native <code>&lt;input type=&quot;checkbox&quot;/&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/CheckBox.html">dijit/form/CheckBox</a>.</p>
+                            <p>Representation of a native <code>&lt;input type=&quot;checkbox&quot;/&gt;</code> element.</p>
                         </div>
                         
                         <div class="bs-docs-example">
@@ -129,7 +126,7 @@ pro1.startup();</pre>
     }
 </script>
 
-<input type="checkbox" name="dec1" value="on" checked="checked" data-dojo-type="dijitive/Checkbox" data-dojo-props="onChange: checkboxOnChange"/>
+<input type="checkbox" name="dec1" value="on" checked="checked" data-dojo-type="dojo-form-controls/Checkbox" data-dojo-props="onChange: checkboxOnChange"/>
                         </div>
                         
                         <h3>Declarative</h3>
@@ -140,7 +137,7 @@ pro1.startup();</pre>
     }
 &lt;/script&gt;
 
-&lt;input type=&quot;checkbox&quot; name=&quot;dec1&quot; value=&quot;on&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dijitive/Checkbox&quot; data-dojo-props=&quot;onChange: checkboxOnChange&quot;/&gt;</pre>
+&lt;input type=&quot;checkbox&quot; name=&quot;dec1&quot; value=&quot;on&quot; checked=&quot;checked&quot; data-dojo-type=&quot;dojo-form-controls/Checkbox&quot; data-dojo-props=&quot;onChange: checkboxOnChange&quot;/&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
@@ -160,7 +157,7 @@ pro1.startup();</pre>
                     <section id="radio" class="spy">
                         <div class="page-header">
                             <h1>Radio</h1>
-                            <p>Representation of a native <code>&lt;input type=&quot;radio&quot;/&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/RadioButton.html">dijit/form/RadioButton</a>.</p>
+                            <p>Representation of a native <code>&lt;input type=&quot;radio&quot;/&gt;</code> element.</p>
                         </div>
                         
                         <div class="bs-docs-example">
@@ -174,8 +171,8 @@ pro1.startup();</pre>
     }
 </script>
 
-<input type="radio" name="size" value="large" data-dojo-type="dijitive/Radio" data-dojo-props="onChange: radio1OnChange"/>
-<input type="radio" name="size" value="small" data-dojo-type="dijitive/Radio" data-dojo-props="onChange: radio2OnChange" checked="checked"/>
+<input type="radio" name="size" value="large" data-dojo-type="dojo-form-controls/Radio" data-dojo-props="onChange: radio1OnChange"/>
+<input type="radio" name="size" value="small" data-dojo-type="dojo-form-controls/Radio" data-dojo-props="onChange: radio2OnChange" checked="checked"/>
                         </div>
                         
                         <h3>Declarative</h3>
@@ -190,8 +187,8 @@ pro1.startup();</pre>
     }
 &lt;/script&gt;
 
-&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;large&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio1OnChange&quot;/&gt;
-&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;small&quot; data-dojo-type=&quot;dijitive/Radio&quot; data-dojo-props=&quot;onChange: radio2OnChange&quot; checked=&quot;checked&quot;/&gt;</pre>
+&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;large&quot; data-dojo-type=&quot;dojo-form-controls/Radio&quot; data-dojo-props=&quot;onChange: radio1OnChange&quot;/&gt;
+&lt;input type=&quot;radio&quot; name=&quot;size&quot; value=&quot;small&quot; data-dojo-type=&quot;dojo-form-controls/Radio&quot; data-dojo-props=&quot;onChange: radio2OnChange&quot; checked=&quot;checked&quot;/&gt;</pre>
                         
                         <h3>Programmatic</h3>
                         
@@ -211,11 +208,11 @@ pro1.startup();</pre>
                     <section id="select" class="spy">
                         <div class="page-header">
                             <h1>Select</h1>
-                            <p>Representation of a native <code>&lt;select&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Select.html">dijit/form/Select</a>.</p>
+                            <p>Representation of a native <code>&lt;select&gt;</code> element.</p>
                         </div>
                         
                         <div class="bs-docs-example">
-                            <select name="dec1" data-dojo-type="dijitive/Select" required="true">
+                            <select name="dec1" data-dojo-type="dojo-form-controls/Select" required="true">
     <option value="">Please select</option>
     <option value="steak-and-lobster">Steak &amp; Lobster</option>
     <option value="clam-chowder" selected="selected">Clam Chowder</option>
@@ -225,19 +222,15 @@ pro1.startup();</pre>
         console.info('select.onChange(): ' + value);
     </script>
     
-    <script type="dojo/watch" data-dojo-prop="value" data-dojo-args="prop, oldVal, val">
-        console.info('select.watch("value")', prop, oldVal, val);
-    </script>
-    
-    <script type="dojo/watch" data-dojo-prop="message" data-dojo-args="prop, oldVal, val">
-        console[(val) ? 'error' : 'info']('select.watch("message"):', val);
+    <script type="dojo/watch" data-dojo-prop="value" data-dojo-args="prop, old, val">
+        console.info('select.watch("value")', prop, old, val);
     </script>
 </select>
                         </div>
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums">&lt;select name=&quot;dec1&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot;&gt;
+                        <pre class="prettyprint linenums">&lt;select name=&quot;dec1&quot; data-dojo-type=&quot;dojo-form-controls/Select&quot; required=&quot;true&quot;&gt;
     &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
     &lt;option value=&quot;steak-and-lobster&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
     &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
@@ -247,12 +240,8 @@ pro1.startup();</pre>
         console.info('select.onChange(): ' + value);
     &lt;/script&gt;
     
-    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;value&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
-        console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
-    &lt;/script&gt;
-    
-    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;message&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
-        console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;value&quot; data-dojo-args=&quot;prop, old, val&quot;&gt;
+        console.info('select.watch(&quot;value&quot;)', prop, old, val);
     &lt;/script&gt;
 &lt;/select&gt;</pre>
 
@@ -268,7 +257,7 @@ pro1.startup();</pre>
 
 var pro1 = new Select({
     name: 'pro1',
-    value: 'pasta',
+    value: 'clam-chowder',
     options: options,
     required: true,
     onChange: function (value) {
@@ -276,18 +265,14 @@ var pro1 = new Select({
     }
 }, 'pro1');
 
-pro1.watch('value', function (prop, oldVal, val) {
-    console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
-});
-
-pro1.watch('message', function (prop, oldVal, val) {
-    console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+pro1.watch('value', function (prop, old, val) {
+    console.info('select.watch(&quot;value&quot;)', prop, old, val);
 });
 
 pro1.startup();</pre>
                         
                         <div class="bs-docs-example">
-                            <select name="dec1" multiple="true" data-dojo-type="dijitive/Select" required="true" size="3">
+                            <select name="dec1" multiple="true" data-dojo-type="dojo-form-controls/Select" required="true" size="3">
     <option value="">Please select</option>
     <option value="steak-and-lobster" selected="selected">Steak &amp; Lobster</option>
     <option value="clam-chowder" selected="selected">Clam Chowder</option>
@@ -297,19 +282,15 @@ pro1.startup();</pre>
         console.info('select.onChange(): ' + value);
     </script>
     
-    <script type="dojo/watch" data-dojo-prop="value" data-dojo-args="prop, oldVal, val">
-        console.info('select.watch("value")', prop, oldVal, val);
-    </script>
-    
-    <script type="dojo/watch" data-dojo-prop="message" data-dojo-args="prop, oldVal, val">
-        console[(val) ? 'error' : 'info']('select.watch("message"):', val);
+    <script type="dojo/watch" data-dojo-prop="value" data-dojo-args="prop, old, val">
+        console.info('select.watch("value")', prop, old, val);
     </script>
 </select>
                         </div>
                         
                         <h3>Declarative</h3>
                         
-                        <pre class="prettyprint linenums">&lt;select name=&quot;dec1&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dijitive/Select&quot; required=&quot;true&quot; size=&quot;3&quot;&gt;
+                        <pre class="prettyprint linenums">&lt;select name=&quot;dec1&quot; multiple=&quot;true&quot; data-dojo-type=&quot;dojo-form-controls/Select&quot; required=&quot;true&quot; size=&quot;3&quot;&gt;
     &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
     &lt;option value=&quot;steak-and-lobster&quot; selected=&quot;selected&quot;&gt;Steak &amp;amp; Lobster&lt;/option&gt;
     &lt;option value=&quot;clam-chowder&quot; selected=&quot;selected&quot;&gt;Clam Chowder&lt;/option&gt;
@@ -319,12 +300,8 @@ pro1.startup();</pre>
         console.info('select.onChange(): ' + value);
     &lt;/script&gt;
     
-    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;value&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
-        console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
-    &lt;/script&gt;
-    
-    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;message&quot; data-dojo-args=&quot;prop, oldVal, val&quot;&gt;
-        console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+    &lt;script type=&quot;dojo/watch&quot; data-dojo-prop=&quot;value&quot; data-dojo-args=&quot;prop, old, val&quot;&gt;
+        console.info('select.watch(&quot;value&quot;)', prop, old, val);
     &lt;/script&gt;
 &lt;/select&gt;</pre>
 
@@ -350,12 +327,8 @@ var pro1 = new Select({
     }
 }, 'pro1');
 
-pro1.watch('value', function (prop, oldVal, val) {
-    console.info('select.watch(&quot;value&quot;)', prop, oldVal, val);
-});
-
-pro1.watch('message', function (prop, oldVal, val) {
-    console[(val) ? 'error' : 'info']('select.watch(&quot;message&quot;):', val);
+pro1.watch('value', function (prop, old, val) {
+    console.info('select.watch(&quot;value&quot;)', prop, old, val);
 });
 
 pro1.startup();</pre>
@@ -365,104 +338,39 @@ pro1.startup();</pre>
                     <section id="textarea" class="spy">
                         <div class="page-header">
                             <h1>Textarea</h1>
-                            <p>Representation of a native <code>&lt;textarea&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/SimpleTextarea.html">dijit/form/SimpleTextarea</a>.</p>
+                            <p>Representation of a native <code>&lt;textarea&gt;</code> element.</p>
                         </div>
                         
                         <div class="bs-docs-example">
                             <script>
-    var textareaOnKeyPress = function (ev) {
-        console.info('Key pressed')
-    }
-    
     var textareaOnChange = function (value) {
         console.info('select.onChange(): ' + value)
     }
 </script>
 
-<textarea name="dec1" data-dojo-type="dijitive/Textarea" data-dojo-props="onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, uppercase: true"></textarea>
+<textarea name="dec1" data-dojo-type="dojo-form-controls/Textarea" data-dojo-props="onChange: textareaOnChange">Some text</textarea>
                         </div>
                         
                         <h3>Declarative</h3>
                         
                         <pre class="prettyprint linenums">&lt;script&gt;
-    var textareaOnKeyPress = function (ev) {
-        console.info('Key pressed')
-    }
-    
     var textareaOnChange = function (value) {
         console.info('select.onChange(): ' + value)
     }
 &lt;/script&gt;
 
-&lt;textarea name=&quot;dec1&quot; data-dojo-type=&quot;dijitive/Textarea&quot; data-dojo-props=&quot;onKeyPress: textareaOnKeyPress, onChange: textareaOnChange, uppercase: true&quot;&gt;&lt;/textarea&gt;</pre>
+&lt;textarea name=&quot;dec1&quot; data-dojo-type=&quot;dojo-form-controls/Textarea&quot; data-dojo-props=&quot;onChange: textareaOnChange&quot;&gt;Some text&lt;/textarea&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
                         <pre class="prettyprint linenums">var pro1 = new Textarea({
     name: 'pro1',
-    uppercase: true,
-    trim: true,
-    onKeyPress: function (ev) {
-        console.info('Key pressed')
-    }
+    value: 'Some text'
 }, 'pro1');
 
 pro1.startup();
 
-pro1.watch('value', function (name, oldVal, val) {
-    console.info('New value is &quot;' + val);
-});</pre>
-                    </section>
-                    
-                    <!-- ExpandingTextarea -->
-                    <section id="expanding-textarea" class="spy">
-                        <div class="page-header">
-                            <h1>ExpandingTextarea</h1>
-                            <p>Representation of a native <code>&lt;textarea&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/Textarea.html">dijit/form/Textarea</a>.</p>
-                        </div>
-                        
-                        <div class="bs-docs-example">
-                            <script>
-    var expandingTextareaOnKeyPress = function (ev) {
-        console.info('Key pressed')
-    }
-    
-    var expandingTextareaOnChange = function (value) {
-        console.info('select.onChange(): ' + value)
-    }
-</script>
-
-<textarea name="dec1" data-dojo-type="dijitive/ExpandingTextarea" data-dojo-props="onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, uppercase: true, trim: true"></textarea>
-                        </div>
-                        
-                        <h3>Declarative</h3>
-                        
-                        <pre class="prettyprint linenums">&lt;script&gt;
-    var expandingTextareaOnKeyPress = function (ev) {
-        console.info('Key pressed')
-    }
-    
-    var expandingTextareaOnChange = function (value) {
-        console.info('select.onChange(): ' + value)
-    }
-&lt;/script&gt;
-
-&lt;textarea name=&quot;dec1&quot; data-dojo-type=&quot;dijitive/ExpandingTextarea&quot; data-dojo-props=&quot;onKeyPress: expandingTextareaOnKeyPress, onChange: expandingTextareaOnChange, uppercase: true, trim: true&quot;&gt;&lt;/textarea&gt;</pre>
-
-                        <h3>Programmatic</h3>
-                        
-                        <pre class="prettyprint linenums">var pro1 = new ExpandingTextarea({
-    name: 'pro1',
-    uppercase: true,
-    trim: true,
-    onKeyPress: function (ev) {
-        console.info('key pressed')
-    }
-}, 'pro1');
-
-pro1.startup();
-
-pro1.watch('value', function (name, oldVal, val) {
+pro1.watch('value', function (name, old, val) {
     console.info('New value is &quot;' + val);
 });</pre>
                     </section>
@@ -471,51 +379,39 @@ pro1.watch('value', function (name, oldVal, val) {
                     <section id="textbox" class="spy">
                         <div class="page-header">
                             <h1>Textbox</h1>
-                            <p>Representation of a native <code>&lt;input type=&quot;text&quot;&gt;</code> element. Same API as <a href="http://dojotoolkit.org/reference-guide/1.8/dijit/form/TextBox.html">dijit/form/TextBox</a>.</p>
+                            <p>Representation of a native <code>&lt;input type=&quot;text&quot;&gt;</code> element.</p>
                         </div>
                         
                         <div class="bs-docs-example">
                             <script>
-    var textboxOnKeyPress = function (ev) {
-        console.info('Key pressed')
-    }
-    
     var textboxOnChange = function (value) {
         console.info('select.onChange(): ' + value)
     }
 </script>
 
-<input type="text" name="dec1" data-dojo-type="dijitive/Textbox" data-dojo-props="onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, uppercase: true, trim: true"/>
+<input type="text" name="dec1" placeholder="Enter text" data-dojo-type="dojo-form-controls/Textbox" data-dojo-props="onChange: textboxOnChange"/>
                         </div>
                         
                         <h3>Declarative</h3>
                         
                         <pre class="prettyprint linenums">&lt;script&gt;
-    var textboxOnKeyPress = function (ev) {
-        console.info('Key pressed')
-    }
-    
     var textboxOnChange = function (value) {
         console.info('select.onChange(): ' + value)
     }
 &lt;/script&gt;
 
-&lt;input type=&quot;text&quot; name=&quot;dec1&quot; data-dojo-type=&quot;dijitive/Textbox&quot; data-dojo-props=&quot;onKeyPress: textboxOnKeyPress, onChange: textboxOnChange, uppercase: true, trim: true&quot;/&gt;</pre>
+&lt;input type=&quot;text&quot; name=&quot;dec1&quot; placeholder=&quot;Enter text&quot; data-dojo-type=&quot;dojo-form-controls/Textbox&quot; data-dojo-props=&quot;onChange: textboxOnChange&quot;/&gt;</pre>
 
                         <h3>Programmatic</h3>
                         
                         <pre class="prettyprint linenums">var pro1 = new Textbox({
     name: 'pro1',
-    uppercase: true,
-    trim: true,
-    onKeyPress: function (ev) {
-        console.info('Key pressed')
-    }
+    placeholder: 'Enter text'
 }, 'pro1');
 
 pro1.startup();
 
-pro1.watch('value', function (name, oldVal, val) {
+pro1.watch('value', function (name, old, val) {
     console.info('New value is &quot;' + val);
 });</pre>
                     </section>
@@ -527,28 +423,25 @@ pro1.watch('value', function (name, oldVal, val) {
     <div class="container">
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>Big thanks go out to the <a href="http://dojotoolkit.org">Dojo community</a> and the <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap crew</a></p>
-        <p>dijitive is written by <a href="http://sirprize.me">Sir Prize</a> and it is released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
-        <p>This project is hosted on <a href="http://github.com/sirprize/dijitive">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dijitive-doc-generator">dijitive-doc-generator</a></p>
+        <p>dojo-form-controls is written by <a href="http://sirprize.me">sirprize</a> and it is released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+        <p>This project is hosted on <a href="http://github.com/sirprize/dojo-form-controls">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dojo-form-controls-doc">dojo-form-controls-doc</a></p>
         
     </div>
 </footer>
         
 
 
-    <script src="assets-201211041538/other/google-code-prettify/prettify.js"></script>
-    <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201211041538/dojo/dojo.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/event.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/promise.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/browser.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/ajax.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/dom-common.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/dom-extra.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/widget-common.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/widget-extra.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/form-click.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/form-select.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/layer/form-text.js"></script>
-    <script type="text/javascript" src="assets-201211041538/frontend/index.js"></script>
+    <script src="assets-201211101623/other/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="assets-201211101623/dojo/dojo.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/layer/event.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/layer/promise.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/layer/browser.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/layer/ajax.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/layer/dom-common.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/layer/dom-extra.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/layer/mijit.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/layer/form.js"></script>
+    <script type="text/javascript" src="assets-201211101623/frontend/index.js"></script>
 
         
 

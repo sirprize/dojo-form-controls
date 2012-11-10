@@ -1,2 +1,0 @@
-//>>built
-define("dijitive/Button",["dojo/_base/declare","dojo/_base/lang","dijit/form/_FormWidget","dijit/form/_ButtonMixin"],function(b,c,d,e){return b([d,e],{templateString:'<button ${!nameAttrSetting} type="${type}" value="${value}" data-dojo-attach-point="focusNode,valueNode,labelNode" data-dojo-attach-event="onclick:_onClick"></button>',_fillContent:function(a){if(a&&(!this.params||!("label"in this.params)))if(a=c.trim(a.innerHTML))this.label=a}})});

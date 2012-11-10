@@ -1,3 +1,0 @@
-//>>built
-define("dijitive/Option",["dojo/_base/declare","dijit/_WidgetBase","dijit/_TemplatedMixin","dojo/dom-attr"],function(c,d,e,b){return c([d,e],{templateString:"<option></option>",value:"",label:"",selected:!1,disabled:!1,xxx:"asdf",_setValueAttr:function(a){b.set(this.domNode,"value",a);this._set("value",a)},_setLabelAttr:function(a){this.domNode.innerHTML=a;this._set("label",a)},_setSelectedAttr:function(a){a&&!this.get("disabled")?b.set(this.domNode,"selected","selected"):b.remove(this.domNode,"selected");
-this._set("selected",a)},_setDisabledAttr:function(a){a||this.get("disabled")?b.set(this.domNode,"disabled","true"):b.remove(this.domNode,"disabled");this._set("disabled",a)}})});

@@ -1,2 +1,0 @@
-//>>built
-define("frontend/layer/nls/form-select_es-es",{"dijit/form/nls/validate":{invalidMessage:"El valor especificado no es v\u00e1lido.",missingMessage:"Este valor es necesario.",rangeMessage:"Este valor est\u00e1 fuera del intervalo."}});
