@@ -1,9 +1,9 @@
 var dojoConfig = {
-    async: 1,
-    cacheBust: 1,
+    async: true,
+    cacheBust: true,
     parseOnLoad: true,
     packages: [
         { name: "mijit", location: "../../sirprize/mijit" },
-        { name: "dijitive", location: "../../.." }
+        { name: "dojo-form-controls", location: "../../.." }
     ]
 };

@@ -1,11 +1,11 @@
-# Dijitive
+# dojo-form-controls
 
-Dojo Dijits For Native Form Controls
+Dojo widgets for native form controls
 
 ## Documentation
 
-[http://sirprize.github.com/dijitive](http://sirprize.github.com/dijitive)
+[http://sirprize.github.com/dojo-form-controls](http://sirprize.github.com/dojo-form-controls)
 
 ## License
 
-dijitive is released under the MIT license
+dojo-form-controls is released under the MIT license

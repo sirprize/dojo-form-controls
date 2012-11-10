@@ -1,7 +1,7 @@
 var profile = (function () {
 
     var miniExcludes = {
-            "dijitive/package": 1
+            "dojo-form-controls/package": 1
         },
         amdExcludes = {},
         isTestRe = /\/tests\//
