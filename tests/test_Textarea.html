@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>dojo-form-controls/Textarea</title>
-        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     </head>
 
     <body>
@@ -15,10 +16,10 @@
             <h3>Programmatic</h3>
             <textarea id="pro1"></textarea>
             
-            <hr />
+            <hr>
             
             <h3>Declarative</h3>
-            <textarea data-dojo-type="dojo-form-controls/Textarea" name="dec1"></textarea>
+            <textarea class="form-control" data-dojo-type="dojo-form-controls/Textarea" name="dec1"></textarea>
         </div>
         
         <script type="text/javascript" src="config.js"></script>
@@ -37,6 +38,7 @@
                 var pro1 = new Textarea({
                     name: 'pro1',
                     placeholder: 'Say hello',
+                    'class': 'form-control',
                     autocomplete: false,
                     onChange: function (val) {
                         console.log('(onChange) New value is ' + val);

@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>dojo-form-controls/Select</title>
-        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     </head>
 
     <body>
@@ -22,7 +23,7 @@
             
             <h3>Declarative</h3>
             <p>Single</p>
-            <select id="dec1" name="dec1" data-dojo-type="dojo-form-controls/Select" required="true">
+            <select id="dec1" name="dec1" class="form-control" data-dojo-type="dojo-form-controls/Select" required="true">
                 <option value="">Please select</option>
                 <option value="a">A</option>
                 <option value="b" selected="selected">B</option>
@@ -32,7 +33,7 @@
             </select>
             
             <p>Multiple</p>
-            <select id="dec2" name="dec2" data-dojo-type="dojo-form-controls/Select" required="true" multiple="trueasdf" size="3">
+            <select id="dec2" name="dec2" class="form-control" data-dojo-type="dojo-form-controls/Select" required="true" multiple size="3">
                 <option value="">Please select</option>
                 <option value="a" selected="selected">A</option>
                 <option value="b" selected="selected">B</option>
@@ -80,6 +81,7 @@
                     name: 'pro1',
                     value: 'b',
                     options: options1,
+                    'class': 'form-control',
                     required: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)
@@ -101,6 +103,7 @@
                     name: 'pro2',
                     value: ['a', 'b'],
                     options: options1,
+                    'class': 'form-control',
                     required: true,
                     size: '3',
                     onChange: function (value) {
@@ -121,6 +124,7 @@
                     name: 'pro3',
                     value: 'a',
                     options: options1,
+                    'class': 'form-control',
                     disabled: true,
                     onChange: function (value) {
                         console.log('onChange(): ' + value)

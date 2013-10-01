@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>dojo-form-controls/Button</title>
-        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     </head>
 
     <body>
@@ -24,7 +25,7 @@
             <button id="pro3"></button>
             <button id="pro4"></button>
             
-            <hr />
+            <hr>
             
             <h3>Declarative</h3>
             <script>
@@ -34,10 +35,10 @@
             </script>
 
             <button class="btn btn-success" data-dojo-type="dojo-form-controls/Button" type="button" name="dec1" value="valuable" data-dojo-props="onClick: buttonOnClick">
-                <i class="icon-music icon-white"></i> Click Click
+                <span class="glyphicon glyphicon-star"></span> Star
             </button>
             
-            <hr />
+            <hr>
         </div>
         
         <script type="text/javascript" src="config.js"></script>
@@ -81,7 +82,7 @@
 
                 var pro3 = new Button({
                     'class': 'btn btn-inverse',
-                    label: '<i class="icon-home icon-white"></i> Click',
+                    label: '<span class="glyphicon glyphicon-star"></span> Star',
                     onClick: function (e) {
                         console.log('clicked');
                     }
@@ -91,7 +92,7 @@
 
                 var pro4 = new Button({
                     'class': 'btn',
-                    label: '<i class="icon-ok"></i>',
+                    label: '<span class="glyphicon glyphicon-star"></span>',
                     onClick: function (e) {
                         console.log('clicked');
                     }
